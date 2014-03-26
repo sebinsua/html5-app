@@ -1,0 +1,6 @@
+2014-03-26 20:05:26.166 HelloCordova[74210:70b] Multi-tasking -> Device: YES, App: YES
+2014-03-26 20:05:26.184 HelloCordova[74210:70b] Unlimited access to network resources
+2014-03-26 20:05:26.350 HelloCordova[74210:70b] [CDVTimer][statusbar] 42.376041ms
+2014-03-26 20:05:26.350 HelloCordova[74210:70b] [CDVTimer][TotalPluginStartup] 42.773008ms
+2014-03-26 20:05:26.439 HelloCordova[74210:70b] Resetting plugins due to page load.
+2014-03-26 20:05:26.742 HelloCordova[74210:70b] Finished load of: file:///Users/sebinsua/Library/Application%20Support/iPhone%20Simulator/7.1/Applications/87B243EA-F91A-40A5-8D51-A66E61ACE45C/HelloCordova.app/www/index.html#/app/playlists
