@@ -31,13 +31,11 @@ TODO
 * [ ] The notification screen contains:
       Requests to add "Help" events to account's ledgers.
       Requests and offers for a meeting related to some help.
-
-The profile screen contains buttons to "request/offer help", their name, photo,
-and most importantly in large text their statement of intent.
-Below this it will eventually contain a list of "Help" events in the form of a
+* [ ] The profile screen contains buttons to "request/offer help", their name, photo, and most importantly in large text their statement of intent.
+* [ ] Below this it will eventually contain a list of "Help" events in the form of a
  vertical timeline.
-If somebody has accepted your request to meetup, the button will be replaced with
-"Converse" which will load a chat screen similar to the one on Whatsapp.
+* [ ] If somebody has accepted your request to meetup, the button will be replaced with
+      "Converse" which will load a chat screen similar to the one on Whatsapp.
 
 
 THE PROBLEM
