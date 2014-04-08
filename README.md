@@ -1,6 +1,45 @@
 Spokes
 ======
 
+TODO
+----
+
+* [ ] There must be a loading screen.
+* [ ] There must be a screen with a register/login button.
+* [ ] I must be able to register with my country locked phone number and name.
+* [ ] The device should store my address book against my account.
+* [ ] The next screen will ask for further information:
+      - city
+      - profile photo
+* [ ] Then it will ask for your statement of intent, in the format:
+       "I want to help people with [X], and I need help with [Y]"
+      A button on the bottom of the screen says "Broadcast".
+
+* * *
+
+* [ ] There must be a stream of statements of intent with profile photos against them (and eventually 'Help' events in between them.)
+* [ ] On the stream of statements, clicking on anything loads the profile screen.
+* [ ] On the top of the screen the header has three parts:
+      On the left, an elastic slide-out menu.
+      In the centre, a little logo that links to the "statement of intent" screen.
+      On the right, a highlightable ticker of number of notifications waiting for you.
+* [ ] Left hand drawer contains:
+      - Account
+      - Log Out
+* [ ] Account contains options to edit the various details of your account.
+* [ ] And also to add Help (person you interacted with, what you did.) - this causes a notification to be signed-off by the other person.
+* [ ] The notification screen contains:
+      Requests to add "Help" events to account's ledgers.
+      Requests and offers for a meeting related to some help.
+
+The profile screen contains buttons to "request/offer help", their name, photo,
+and most importantly in large text their statement of intent.
+Below this it will eventually contain a list of "Help" events in the form of a
+ vertical timeline.
+If somebody has accepted your request to meetup, the button will be replaced with
+"Converse" which will load a chat screen similar to the one on Whatsapp.
+
+
 THE PROBLEM
 -----------
 
@@ -25,53 +64,6 @@ I want to throw better parties.
 
 To afford interactions between people of different work roles.
 To build high net-worth (measured in helpfulness) heterogenous networks of people.
-
-* * *
-
-There must be a loading screen.
-
-* * *
-
-I must be able to register with my country locked phone number and name.
-
-The device should store my address book against my account.
-
-The next screen will ask for further information:
-   - city
-   - profile photo
-
-Then it will ask for your statement of intent, in the format:
-   "I want to help people with [X], and I need help with [Y]"
-A button on the bottom of the screen says "Broadcast".
-
-* * *
-
-There must be a stream of statements of intent with profile photos against them (and eventually 'Help' events in between them.)
-On the stream of statements, clicking on anything loads the profile screen.
-
-On the top of the screen the header has three parts:
-On the left, an elastic slide-out menu.
-In the centre, a little logo that links to the "statement of intent" screen.
-On the right, a highlightable ticker of number of notifications waiting for you.
-
-Left hand drawer contains:
-   - Account
-   - Log Out
-
-Account contains options to edit the various details of your account.
-And also to add Help (person you interacted with, what you did.) - this causes
-a notification to be signed-off by the other person.
-
-The notification screen contains:
-Requests to add "Help" events to account's ledgers.
-Requests and offers for a meeting related to some help.
-
-The profile screen contains buttons to "request/offer help", their name, photo,
-and most importantly in large text their statement of intent.
-Below this it will eventually contain a list of "Help" events in the form of a
- vertical timeline.
-If somebody has accepted your request to meetup, the button will be replaced with
-"Converse" which will load a chat screen similar to the one on Whatsapp.
 
 Philosophy
 ==========
