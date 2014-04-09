@@ -4,6 +4,7 @@ Spokes
 TODO
 ----
 
+* [ ] Setup the e2e Protractor tests.
 * [ ] There must be a loading screen.
 * [ ] There must be a screen with a register/login button.
 * [ ] I must be able to register with my country locked phone number and name.
@@ -37,6 +38,17 @@ TODO
 * [ ] If somebody has accepted your request to meetup, the button will be replaced with
       "Converse" which will load a chat screen similar to the one on Whatsapp.
 
+Tech Considerations?
+
+https://github.com/mgonto/restangular
+
+http://famo.us
+
+Audo/Video Talk
+https://developer.oovoo.com/registration
+https://github.com/songz/cordova-plugin-opentok
+http://phonegap.com/blog/2013/06/13/power-your-phonegap-app-with-the-new-showkit-sdk/
+http://phono.com
 
 THE PROBLEM
 -----------

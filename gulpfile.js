@@ -6,6 +6,7 @@ var minifyCss = require('gulp-minify-css');
 var rename = require('gulp-rename');
 var jshint = require('gulp-jshint');
 var karma = require('gulp-karma');
+var protractor = require("gulp-protractor").protractor;
 
 var paths = {
   sass: ['./scss/**/*.scss'],
@@ -30,15 +31,25 @@ gulp.task('lint', function() {
 });
 
 gulp.task('test', function() {
+  gulp.src(["./test/e2e/**/*.js"])
+      .pipe(protractor({
+          configFile: "test/protractor.config.js",
+          args: ['--baseUrl', 'http://127.0.0.1:8000']
+      }))
+      .on('error', function (e) {
+        throw e;
+      });
   // Be sure to return the stream
   return gulp.src(paths.karmaDeps.concat(paths.js)).pipe(karma({
     configFile: 'karma.conf.js',
     action: 'run'
-  })).on('error', function(err) {
+  })).on('error', function (err) {
     // Make sure failed tests cause gulp to exit non-zero
     throw err;
   });
 });
+
+
 
 gulp.task('sass', function(done) {
   gulp.src('./scss/ionic.app.scss')
