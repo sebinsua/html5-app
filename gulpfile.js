@@ -7,8 +7,10 @@ var rename = require('gulp-rename');
 var jshint = require('gulp-jshint');
 var karma = require('gulp-karma');
 var protractor = require("gulp-protractor").protractor;
+var livereload = require('gulp-livereload');
 
 var paths = {
+  destination: './www',
   sass: ['./scss/**/*.scss'],
   js: [
     'www/js/**/*.js',
@@ -23,6 +25,11 @@ var paths = {
     'www/lib/angular-mocks/angular-mocks.js'
   ]
 };
+
+gulp.task('init', function() {
+  console.log('Installing latest stable release of Ionic from bower');
+  return bower.commands.install();
+});
 
 gulp.task('lint', function() {
   gulp.src(paths.js)
@@ -64,6 +71,12 @@ gulp.task('sass', function(done) {
     .on('end', done);
 });
 
+gulp.task('server', function (next) {
+  var connect = require('connect'),
+      server = connect();
+  server.use(connect.static(paths.destination)).listen(process.env.PORT || 8080, next);
+});
+
 gulp.task('watch-sass', function() {
   return gulp.watch(paths.sass, ['sass']);
 });
@@ -73,13 +86,15 @@ gulp.task('watch-karma', function () {
     configFile: 'karma.conf.js',
     action: 'watch'
   }));
-})
+});
 
-gulp.task('init', function() {
-  console.log('Installing latest stable release of Ionic from bower');
-  return bower.commands.install();
+gulp.task('watch-server', ['server'], function () {
+  var server = livereload();
+  gulp.watch(paths.destination + '/**').on('change', function (file) {
+    server.changed(file.path);
+  });
 });
 
 gulp.task('test', ['test-e2e', 'test-unit']);
-gulp.task('watch', ['watch-sass', 'watch-karma']);
+gulp.task('watch', ['watch-sass', 'watch-karma', 'watch-server']);
 gulp.task('default', ['lint', 'test']);

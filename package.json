@@ -18,7 +18,9 @@
     "gulp-karma": "0.0.4",
     "gulp-jshint": "^1.5.3",
     "protractor": "^0.21.0",
-    "gulp-protractor": "0.0.7"
+    "gulp-protractor": "0.0.7",
+    "gulp-livereload": "^1.2.0",
+    "connect": "^2.14.4"
   },
   "scripts": {
     "postinstall": "./node_modules/.bin/webdriver-manager update",
