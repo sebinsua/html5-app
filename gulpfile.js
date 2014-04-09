@@ -30,15 +30,18 @@ gulp.task('lint', function() {
     .pipe(jshint.reporter('default'));
 });
 
-gulp.task('test', function() {
-  gulp.src(["./test/e2e/**/*.js"])
-      .pipe(protractor({
-          configFile: "test/protractor.config.js",
-          args: ['--baseUrl', 'http://127.0.0.1:8000']
-      }))
-      .on('error', function (e) {
-        throw e;
-      });
+gulp.task('test-e2e', function () {
+  return gulp.src(["./test/e2e/**/*.js"])
+  .pipe(protractor({
+      configFile: "test/protractor.config.js",
+      args: ['--baseUrl', 'http://127.0.0.1:8000']
+  }))
+  .on('error', function (e) {
+    throw e;
+  });
+});
+
+gulp.task('test-unit', function () {
   // Be sure to return the stream
   return gulp.src(paths.karmaDeps.concat(paths.js)).pipe(karma({
     configFile: 'karma.conf.js',
@@ -49,10 +52,8 @@ gulp.task('test', function() {
   });
 });
 
-
-
 gulp.task('sass', function(done) {
-  gulp.src('./scss/ionic.app.scss')
+  return gulp.src('./scss/ionic.app.scss')
     .pipe(sass())
     .pipe(gulp.dest('./www/css/'))
     .pipe(minifyCss({
@@ -63,18 +64,22 @@ gulp.task('sass', function(done) {
     .on('end', done);
 });
 
-gulp.task('watch', function() {
-  gulp.watch(paths.sass, ['sass']);
+gulp.task('watch-sass', function() {
+  return gulp.watch(paths.sass, ['sass']);
+});
 
+gulp.task('watch-karma', function () {
   return gulp.src(paths.karmaDeps.concat(paths.js)).pipe(karma({
     configFile: 'karma.conf.js',
     action: 'watch'
   }));
-});
+})
 
 gulp.task('init', function() {
   console.log('Installing latest stable release of Ionic from bower');
   return bower.commands.install();
 });
 
-gulp.task('default', ['lint', 'watch']);
+gulp.task('test', ['test-e2e', 'test-unit']);
+gulp.task('watch', ['watch-sass', 'watch-karma']);
+gulp.task('default', ['lint', 'test']);
