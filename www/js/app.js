@@ -1,31 +1,28 @@
 (function () {
   "use strict";
 
-  angular.module('spokes', ['ionic', 'spokes.controllers'])
+  var spokes = angular.module('spokes', ['ionic', 'spokes.controllers']);
 
-  .run(function ($ionicPlatform) {
-    $ionicPlatform.ready(function () {
-      if (window.StatusBar) {
-        StatusBar.styleDefault();
-      }
-    });
-  })
-
-  .config(function ($stateProvider, $urlRouterProvider) {
+  spokes.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
 
     $stateProvider
-    .state('app.loading', {
+    .state('app', {
       url: "/",
-      abstract: true,
-      templateUrl: "templates/menu.html",
-      controller: 'AppCtrl'
+      templateUrl: "./templates/loading-screen.html",
+      controller: 'LoadingScreenCtrl'
     });
 
     // if none of the above states are matched, use this as the fallback
     $urlRouterProvider.otherwise('/');
 
-    console.log("hi!");
-    console.log($stateProvider);
-  });
+  }]);
+
+  spokes.run(['$ionicPlatform', function ($ionicPlatform) {
+    $ionicPlatform.ready(function () {
+      if (window.StatusBar) {
+        StatusBar.styleDefault();
+      }
+    });
+  }]);
 
 })();
