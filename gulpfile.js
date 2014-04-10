@@ -1,13 +1,17 @@
+/*jshint node: true */
+"use strict";
+
 var bower = require('bower');
-var gulp = require('gulp');
-var concat = require('gulp-concat');
-var sass = require('gulp-sass');
-var minifyCss = require('gulp-minify-css');
-var rename = require('gulp-rename');
-var jshint = require('gulp-jshint');
-var karma = require('gulp-karma');
-var protractor = require("gulp-protractor").protractor;
-var livereload = require('gulp-livereload');
+
+var gulp = require('gulp'),
+  concat = require('gulp-concat'),
+  sass = require('gulp-sass'),
+  minifyCss = require('gulp-minify-css'),
+  rename = require('gulp-rename'),
+  jshint = require('gulp-jshint'),
+  karma = require('gulp-karma'),
+  protractor = require("gulp-protractor").protractor,
+  livereload = require('gulp-livereload');
 
 var paths = {
   destination: './www',
@@ -26,12 +30,12 @@ var paths = {
   ]
 };
 
-gulp.task('init', function() {
+gulp.task('init', function () {
   console.log('Installing latest stable release of Ionic from bower');
   return bower.commands.install();
 });
 
-gulp.task('lint', function() {
+gulp.task('lint', function () {
   gulp.src(paths.js)
     .pipe(jshint())
     .pipe(jshint.reporter('default'));
@@ -39,13 +43,13 @@ gulp.task('lint', function() {
 
 gulp.task('test-e2e', ['test-unit'], function () {
   return gulp.src(["./test/e2e/**/*.js"])
-  .pipe(protractor({
+    .pipe(protractor({
       configFile: "./test/protractor.config.js",
-      args: ['--baseUrl', 'http://127.0.0.1:8000']
-  }))
-  .on('error', function (e) {
-    throw e;
-  });
+      args: ['--baseUrl', 'http://127.0.0.1:8080']
+    }))
+    .on('error', function (e) {
+      throw e;
+    });
 });
 
 gulp.task('test-unit', function () {
@@ -77,7 +81,7 @@ gulp.task('server', function (next) {
   server.use(connect.static(paths.destination)).listen(process.env.PORT || 8080, next);
 });
 
-gulp.task('watch-sass', function() {
+gulp.task('watch-sass', function () {
   return gulp.watch(paths.sass, ['sass']);
 });
 

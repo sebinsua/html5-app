@@ -24,6 +24,7 @@
   },
   "scripts": {
     "postinstall": "./node_modules/.bin/webdriver-manager update",
-    "test": "gulp test"
+    "test": "gulp test",
+    "start": "ionic emulate ios"
   }
 }

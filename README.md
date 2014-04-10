@@ -4,7 +4,7 @@ Spokes
 TODO
 ----
 
-* [ ] Setup the e2e Protractor tests.
+* [x] Setup the e2e Protractor tests.
 * [ ] There must be a loading screen.
 * [ ] There must be a screen with a register/login button.
 * [ ] I must be able to register with my country locked phone number and name.
