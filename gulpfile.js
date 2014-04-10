@@ -37,10 +37,10 @@ gulp.task('lint', function() {
     .pipe(jshint.reporter('default'));
 });
 
-gulp.task('test-e2e', function () {
+gulp.task('test-e2e', ['test-unit'], function () {
   return gulp.src(["./test/e2e/**/*.js"])
   .pipe(protractor({
-      configFile: "test/protractor.config.js",
+      configFile: "./test/protractor.config.js",
       args: ['--baseUrl', 'http://127.0.0.1:8000']
   }))
   .on('error', function (e) {
@@ -59,7 +59,7 @@ gulp.task('test-unit', function () {
   });
 });
 
-gulp.task('sass', function(done) {
+gulp.task('sass', function (done) {
   return gulp.src('./scss/ionic.app.scss')
     .pipe(sass())
     .pipe(gulp.dest('./www/css/'))
@@ -95,6 +95,6 @@ gulp.task('watch-server', ['server'], function () {
   });
 });
 
-gulp.task('test', ['test-e2e', 'test-unit']);
+gulp.task('test', ['test-unit', 'test-e2e']);
 gulp.task('watch', ['watch-sass', 'watch-karma', 'watch-server']);
 gulp.task('default', ['lint', 'test']);
