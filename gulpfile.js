@@ -75,7 +75,7 @@ gulp.task('sass', function (done) {
     .on('end', done);
 });
 
-gulp.task('server', function (next) {
+gulp.task('serve', function (next) {
   var connect = require('connect'),
       server = connect();
   server.use(connect.static(paths.destination)).listen(process.env.PORT || 8080, next);
@@ -92,7 +92,7 @@ gulp.task('watch-karma', function () {
   }));
 });
 
-gulp.task('watch-server', ['server'], function () {
+gulp.task('watch-files', ['serve'], function () {
   var server = livereload();
   gulp.watch(paths.destination + '/**').on('change', function (file) {
     server.changed(file.path);
@@ -100,5 +100,5 @@ gulp.task('watch-server', ['server'], function () {
 });
 
 gulp.task('test', ['test-unit', 'test-e2e']);
-gulp.task('watch', ['watch-sass', 'watch-karma', 'watch-server']);
+gulp.task('watch', ['watch-sass', 'watch-karma', 'watch-files']);
 gulp.task('default', ['lint', 'test']);

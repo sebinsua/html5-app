@@ -20,7 +20,8 @@
     "protractor": "^0.21.0",
     "gulp-protractor": "0.0.7",
     "gulp-livereload": "^1.2.0",
-    "connect": "^2.14.4"
+    "connect": "^2.14.4",
+    "ios-deploy": "^1.0.6"
   },
   "scripts": {
     "postinstall": "./node_modules/.bin/webdriver-manager update",

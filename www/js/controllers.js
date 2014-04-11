@@ -13,7 +13,7 @@
 
   controllers.controller('HomeCtrl', ['$scope', '$ionicNavBarDelegate', function ($scope, $ionicNavBarDelegate) {
     console.log("Home: This is executed.");
-    $ionicNavBarDelegate.back(false);
+    $ionicNavBarDelegate.showBackButton(false);
 
     $scope.items = [
       "Word",
