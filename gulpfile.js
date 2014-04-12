@@ -99,6 +99,50 @@ gulp.task('watch-files', ['serve'], function () {
   });
 });
 
-gulp.task('test', ['test-unit', 'test-e2e']);
+gulp.task('emulate-ios', function () {
+  var spawn = require('child_process').spawn;
+
+  var ionicEmulateIos = spawn('ionic', ['emulate', 'ios']);
+  ionicEmulateIos.stdout.on('data', function (data) {
+    console.log(data.toString());
+  });
+
+  ionicEmulateIos.stderr.on('data', function (data) {
+    console.log('ERROR: ' + data.toString());
+  });
+
+  ionicEmulateIos.on('exit', function (code) {
+    console.log('ionic exited with code ' + code);
+
+    var tailingLog = spawn('tail', ['-f', './platforms/ios/cordova/console.log']);
+    tailingLog.stdout.on('data', function (data) {
+      console.log(data.toString());
+    });
+    tailingLog.stderr.on('data', function (data) {
+      console.log('ERROR: ' + data.toString());
+    });
+  });
+});
+
+gulp.task('run-ios', function () {
+  var spawn = require('child_process').spawn;
+
+  var ionicRunIos = spawn('ionic', ['run', 'ios']);
+  ionicRunIos.stdout.on('data', function (data) {
+    console.log(data.toString());
+  });
+
+  ionicRunIos.stderr.on('data', function (data) {
+    console.log('ERROR: ' + data.toString());
+  });
+
+  ionicRunIos.on('exit', function (code) {
+    console.log('ionic exited with code ' + code);
+  });
+});
+
+gulp.task('test', ['lint', 'test-unit', 'test-e2e']);
 gulp.task('watch', ['watch-sass', 'watch-karma', 'watch-files']);
-gulp.task('default', ['lint', 'test']);
+gulp.task('emulate', ['emulate-ios']);
+gulp.task('run', ['run-ios']);
+gulp.task('default', ['serve']);

@@ -15,10 +15,10 @@ TODO
 * [ ] Then it will ask for your statement of intent, in the format:
        "I want to help people with [X], and I need help with [Y]"
       A button on the bottom of the screen says "Broadcast".
+* [ ] There must be a stream of statements of intent with profile photos against them (and eventually 'Help' events in between them.)
 
 * * *
 
-* [ ] There must be a stream of statements of intent with profile photos against them (and eventually 'Help' events in between them.)
 * [ ] On the stream of statements, clicking on anything loads the profile screen.
 * [ ] On the top of the screen the header has three parts:
       On the left, an elastic slide-out menu.

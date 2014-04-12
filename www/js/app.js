@@ -11,6 +11,32 @@
         templateUrl: "./templates/loading-screen.html",
         controller: 'LoadingScreenCtrl'
       })
+      .state('sign-in', {
+        url: "/sign-in",
+        templateUrl: "./templates/sign-in.html",
+        controller: 'SignInCtrl'
+      })
+      .state('join', {
+        abstract: true,
+        url: "/join",
+
+        template: '<ion-view/>'
+      })
+      .state('join.basic', {
+        url: '/basic',
+        templateUrl: './templates/join-basic.html',
+        controller: 'JoinBasicCtrl'
+      })
+      .state('join.further', {
+        url: '/basic',
+        templateUrl: './templates/join-further.html',
+        controller: 'JoinFurtherCtrl'
+      })
+      .state('proposal', {
+        url: '/proposal',
+        templateUrl: './templates/proposal.html',
+        controller: 'ProposalCtrl'
+      })
       .state('app', {
         url: '/app',
         abstract: true,
@@ -21,8 +47,26 @@
         url: '/home',
         views: {
           menuContent: {
-            templateUrl: "./templates/home.html",
-            controller: 'HomeCtrl'
+            templateUrl: "./templates/stream.html",
+            controller: 'StreamCtrl'
+          }
+        }
+      })
+      .state('app.profile', {
+        url: '/profile',
+        views: {
+          menuContent: {
+            templateUrl: "./templates/profile.html",
+            controller: 'ProfileCtrl'
+          }
+        }
+      })
+      .state('app.notifications', {
+        url: '/profile',
+        views: {
+          menuContent: {
+            templateUrl: "./templates/notifications.html",
+            controller: 'NotificationsCtrl'
           }
         }
       });
