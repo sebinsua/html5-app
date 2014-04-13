@@ -28,7 +28,7 @@
     "ios-deploy": "^1.0.6"
   },
   "scripts": {
-    "postinstall": "./node_modules/.bin/bower install -s && ./node_modules/.bin/webdriver-manager update",
+    "postinstall": "gulp init",
     "test": "gulp test",
     "start": "gulp run"
   }

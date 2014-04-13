@@ -18,8 +18,29 @@
   controllers.controller('JoinBasicCtrl', ['$scope', '$state', function ($scope, $state) {
     console.log("Join Basic: This is executed.");
 
+    $scope.profilePhoto = "https://pbs.twimg.com/profile_images/3583837846/345847dccc3e3bd8bd1fbed402a1f963_bigger.jpeg";
+
     $scope.next = function next() {
       $state.go('join.further');
+    };
+
+    $scope.getImage = function getImage() {
+      var onSuccess = function (fileUri) {
+        console.log(fileUri);
+        $scope.profilePhoto = fileUri;
+        $scope.$apply();
+      };
+      var onFail = function(e) {
+        console.log("On fail " + e);
+      };
+
+      var options =   {
+        quality: 50,
+        destinationType: Camera.DestinationType.FILE_URI,
+        sourceType: 0, // 0:Photo Library, 1=Camera, 2=Saved Photo Album
+        encodingType: 0 // 0=JPG 1=PNG
+      };
+      navigator.camera.getPicture(onSuccess, onFail, options);
     };
   }]);
 

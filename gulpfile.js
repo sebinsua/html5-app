@@ -33,6 +33,38 @@ var paths = {
   ]
 };
 
+gulp.task('init', function (done) {
+  var spawn = require('child_process').spawn;
+
+  var finishEventCount = 0, TOTAL_FINISH_EVENTS = 3;
+  var setupCordova = spawn('./setup_cordova.sh'),
+      bowerInstall = spawn('./node_modules/.bin/bower', ['install', '-q']),
+      webDriverInstall = spawn('./node_modules/.bin/webdriver-manager', ['update']);
+
+  var consolePrintData = function (data) {
+    console.log(data.toString());
+  }, consoleErrorData = function (data) {
+    console.log('ERROR: ' + data.toString());
+  }, finishEvent = function (code) {
+    console.log("Finished with the code: " + code);
+    finishEventCount += 1;
+    if (finishEventCount === TOTAL_FINISH_EVENTS) {
+      done();
+    }
+  };
+
+  setupCordova.on('exit', finishEvent);
+  bowerInstall.on('exit', finishEvent);
+  webDriverInstall.on('exit', finishEvent);
+
+  setupCordova.stdout.on('data', consolePrintData);
+  setupCordova.stderr.on('data', consoleErrorData);
+  bowerInstall.stdout.on('data', consolePrintData);
+  bowerInstall.stderr.on('data', consoleErrorData);
+  webDriverInstall.stdout.on('data', consolePrintData);
+  webDriverInstall.stderr.on('data', consoleErrorData);
+});
+
 gulp.task('lint', function (done) {
   gulp.src(paths.js)
       .pipe(jshint())

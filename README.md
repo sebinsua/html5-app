@@ -4,8 +4,6 @@ Spokes
 TODO
 ----
 
-* Why is the image submit not working?
-
 * * *
 
 * [x] Setup the e2e Protractor tests.
