@@ -18,6 +18,29 @@
   controllers.controller('JoinBasicCtrl', ['$scope', '$state', function ($scope, $state) {
     console.log("Join Basic: This is executed.");
 
+    var getContacts = function getContacts() {
+      var onSuccess = function (contacts) {
+        console.log(contacts);
+        $scope.contacts = contacts;
+        $scope.$apply();
+      };
+      var onFail = function (e) {
+        console.log("On fail " + e);
+      };
+
+      // @TODO: This can be implemented with a promise... :)
+      ionic.Platform.ready(function () {
+        var options = new ContactFindOptions();
+
+        options.filter = "";
+        options.multiple = true;
+        var filter = ["phoneNumbers", "displayName", "addresses"];
+
+        navigator.contacts.find(filter, onSuccess, onFail, options);
+      });
+    };
+    getContacts();
+
     $scope.profilePhoto = "https://pbs.twimg.com/profile_images/3583837846/345847dccc3e3bd8bd1fbed402a1f963_bigger.jpeg";
 
     $scope.next = function next() {
