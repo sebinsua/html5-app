@@ -1,9 +1,16 @@
-<ion-view title="loading-screen">
-    <ion-content>
-        <h1>Browse</h1>
-
-        <a ui-sref="app.home" class="button button-block button-positive">
-            Start
-        </a>
+<ion-view title="Meeting Place">
+    <ion-content scroll="false">
+        <div class="list">
+            <label class="item item-input">
+                <i class="icon ion-ios7-search placeholder-icon"></i>
+                <input type="search" placeholder="Meeting Place" />
+            </label>
+        </div>
     </ion-content>
+
+    <ion-footer-bar class="bar bar-footer">
+        <button ng-click="next()" class="button button-positive pull-right ion-chevron-right">
+            Next
+        </button>
+    </ion-footer-bar>
 </ion-view>

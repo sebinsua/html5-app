@@ -26,6 +26,6 @@
   "scripts": {
     "postinstall": "./node_modules/.bin/webdriver-manager update",
     "test": "gulp test",
-    "start": "gulp emulate"
+    "start": "gulp run"
   }
 }

@@ -1,0 +1,44 @@
+.circle {
+  line-height: 0;		/* remove line-height */
+  display: inline-block;	/* circle wraps image */
+  margin: 5px;
+  border-radius: 50%;	/* relative value */
+  border: 3px solid white;/* border width   */
+  box-shadow: 0px 0px 5px rgba(0,0,0,0.4);
+  transition: linear 0.25s;
+
+  input, img {
+    border-radius: 50%;	/* relative value for
+				   adjustable image size */
+  }
+
+  &:hover {
+    transition: ease-out 0.3s;
+    transform: scale(0.8) rotate(20deg) translateZ(0);
+  }
+}
+
+a.circle { color: transparent; } /* IE fix: removes blue border */
+
+.item {
+  .country-picker {
+    position: relative;
+    direction: ltr;
+
+    padding-left: 0px;
+    padding-top: 8px;
+    padding-bottom: 7px;
+
+    &:focus {
+      min-width: auto;
+      width: auto;
+    }
+  }
+
+  .telephone-area-code {
+    max-width: 2.5em;
+    padding-right: 0px;
+    margin-right: 5px;
+    background: white;
+  }
+}

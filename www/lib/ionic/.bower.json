@@ -1,6 +1,5 @@
 {
   "name": "ionic",
-  "version": "1.0.0-beta.1",
   "codename": "actinium",
   "homepage": "https://github.com/driftyco/ionic",
   "authors": [
@@ -29,18 +28,18 @@
   "license": "MIT",
   "private": false,
   "dependencies": {
-    "angular": "1.2.12",
-    "angular-animate": "1.2.12",
-    "angular-sanitize": "1.2.12",
+    "angular": "~1.2.12",
+    "angular-animate": "~1.2.12",
+    "angular-sanitize": "~1.2.12",
     "angular-ui-router": "0.2.7"
   },
-  "_release": "1.0.0-beta.1",
+  "_release": "058e279237",
   "_resolution": {
-    "type": "version",
-    "tag": "v1.0.0-beta.1",
-    "commit": "3b1f1a7e443e64bf360dd12a0512f853b9a67a9d"
+    "type": "branch",
+    "branch": "master",
+    "commit": "058e279237e70d99894ebcf29ea426e26d3a2271"
   },
   "_source": "git://github.com/driftyco/ionic-bower.git",
-  "_target": "1.0.0-beta.1",
+  "_target": "master",
   "_originalSource": "driftyco/ionic-bower"
 }

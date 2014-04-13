@@ -6,10 +6,10 @@
   spokes.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
 
     $stateProvider
-      .state('loading-screen', {
+      .state('value-proposition', {
         url: "/",
-        templateUrl: "./templates/loading-screen.html",
-        controller: 'LoadingScreenCtrl'
+        templateUrl: "./templates/value-proposition.html",
+        controller: 'ValuePropositionCtrl'
       })
       .state('sign-in', {
         url: "/sign-in",
@@ -17,10 +17,10 @@
         controller: 'SignInCtrl'
       })
       .state('join', {
-        abstract: true,
         url: "/join",
+        abstract: true,
 
-        template: '<ion-view/>'
+        templateUrl: './templates/join.html'
       })
       .state('join.basic', {
         url: '/basic',
@@ -28,23 +28,33 @@
         controller: 'JoinBasicCtrl'
       })
       .state('join.further', {
-        url: '/basic',
+        url: '/further',
         templateUrl: './templates/join-further.html',
         controller: 'JoinFurtherCtrl'
       })
-      .state('proposal', {
+      .state('join.proposal', {
         url: '/proposal',
-        templateUrl: './templates/proposal.html',
-        controller: 'ProposalCtrl'
+        templateUrl: './templates/join-proposal.html',
+        controller: 'JoinProposalCtrl'
       })
       .state('app', {
         url: '/app',
         abstract: true,
+
         templateUrl: "./templates/menu.html",
         controller: 'AppCtrl'
       })
-      .state('app.home', {
-        url: '/home',
+      .state('app.proposal', {
+        url: '/proposal',
+        views: {
+          menuContent: {
+            templateUrl: './templates/proposal.html',
+            controller: 'ProposalCtrl'
+          }
+        }
+      })
+      .state('app.stream', {
+        url: '/stream',
         views: {
           menuContent: {
             templateUrl: "./templates/stream.html",
@@ -62,7 +72,7 @@
         }
       })
       .state('app.notifications', {
-        url: '/profile',
+        url: '/notifications',
         views: {
           menuContent: {
             templateUrl: "./templates/notifications.html",

@@ -4,17 +4,21 @@ Spokes
 TODO
 ----
 
+* Work out how the text will be entered on the proposition page.
+
+* * *
+
 * [x] Setup the e2e Protractor tests.
-* [ ] There must be a loading screen.
-* [ ] There must be a screen with a register/login button.
-* [ ] I must be able to register with my country locked phone number and name.
-* [ ] The device should store my address book against my account.
-* [ ] The next screen will ask for further information:
-      - city
+* [x] There must be a loading screen. There must be a screen with a register/login button.
+* [x] I must be able to register with my country locked phone number and name.
+* [x] The next screen will ask for further information:
       - profile photo
-* [ ] Then it will ask for your statement of intent, in the format:
+      - name
+      - city
+* [x] Then it will ask for your statement of intent, in the format:
        "I want to help people with [X], and I need help with [Y]"
       A button on the bottom of the screen says "Broadcast".
+* [ ] The device should store my address book against my account.
 * [ ] There must be a stream of statements of intent with profile photos against them (and eventually 'Help' events in between them.)
 
 * * *

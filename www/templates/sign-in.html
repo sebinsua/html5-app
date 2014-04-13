@@ -1,9 +1,12 @@
 <ion-view>
-    <ion-content>
-        <h1>Browse</h1>
-
-        <a ui-sref="app.home" class="button button-block button-positive">
-            Start
-        </a>
+    <ion-content scroll="false">
+        <div class="vertical-align">
+            <div class="horizontal-align">
+                <button ng-click="signIn()" class="button button-positive">
+                    Sign In with LinkedIn
+                </button>
+                <div class="note sign-in-note">If you are new to Spokes we will create an account for you.</div>
+            </div>
+        </div>
     </ion-content>
 </ion-view>
