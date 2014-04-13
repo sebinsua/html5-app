@@ -15,7 +15,11 @@
     };
   }]);
 
-  controllers.controller('JoinBasicCtrl', ['$scope', '$state', function ($scope, $state) {
+  controllers.controller('SignOutCtrl', ['$scope', '$state', function ($scope, $state) {
+    console.log("Sign Out: This is executed.");
+  }]);
+
+  controllers.controller('JoinBasicCtrl', ['$scope', '$state', '$sce', function ($scope, $state, $sce) {
     console.log("Join Basic: This is executed.");
 
     var getContacts = function getContacts() {
@@ -29,7 +33,7 @@
       };
 
       // @TODO: This can be implemented with a promise... :)
-      ionic.Platform.ready(function () {
+      navigator.contacts && ionic.Platform.ready(function () {
         var options = new ContactFindOptions();
 
         options.filter = "";
@@ -57,13 +61,19 @@
         console.log("On fail " + e);
       };
 
-      var options =   {
-        quality: 50,
-        destinationType: Camera.DestinationType.FILE_URI,
-        sourceType: 0, // 0:Photo Library, 1=Camera, 2=Saved Photo Album
-        encodingType: 0 // 0=JPG 1=PNG
-      };
-      navigator.camera.getPicture(onSuccess, onFail, options);
+      navigator.camera && ionic.Platform.ready(function () {
+        var options = {
+          quality: 50,
+          destinationType: Camera.DestinationType.FILE_URI,
+          sourceType: 0, // 0:Photo Library, 1=Camera, 2=Saved Photo Album
+          encodingType: 0 // 0=JPG 1=PNG
+        };
+        navigator.camera.getPicture(onSuccess, onFail, options);
+      });
+    };
+
+    $scope.trustSrc = function trustSrc(src) {
+      return $sce.trustAsResourceUrl(src);
     };
   }]);
 
@@ -91,14 +101,21 @@
     console.log("App: This is executed.");
   }]);
 
-  controllers.controller('StreamCtrl', ['$scope', function ($scope) {
+  controllers.controller('StreamCtrl', ['$scope', 'StreamService', function ($scope, StreamService) {
     console.log("Stream: This is executed.");
 
-    $scope.items = [
-      "Word",
-      "Other",
-      "Thing"
-    ];
+    $scope.getStream = function getStream(refresh) {
+      refresh = refresh || false;
+      return StreamService.getAll().then(function (items) {
+        $scope.items = items;
+
+        if (refresh) {
+          $scope.$broadcast('scroll.refreshComplete');
+        }
+      });
+    };
+
+    $scope.items = $scope.getStream();
   }]);
 
   controllers.controller('ProfileCtrl', ['$scope', function ($scope) {

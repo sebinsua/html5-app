@@ -10,19 +10,19 @@
     <ion-content>
         <ion-refresher
             pulling-text="Loading..."
-            on-refresh="doRefresh()">
+            on-refresh="getStream(true)">
         </ion-refresher>
 
         <div class="list">
             <div class="card" ng-repeat="item in items">
                 <div class="item item-avatar">
                     <img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcS1EU8EJBTdM0hXV0IblhvWTJ-XIsQBb_yNtk9Bc7NqSr-aWNN7yA" />
-                    <h2>Samantha</h2>
-                    <p>November 05, 2013</p>
+                    <h2>{{item.user.name}}</h2>
+                    <p am-time-ago="item.request.created"></p>
                 </div>
 
                 <div class="item item-body">
-                    <p>Lorem ipsum dolores.</p>
+                    <p>I can help {{item.offer.description}} and I need help {{item.request.description}}.</p>
                 </div>
             </div>
         </div>

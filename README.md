@@ -4,6 +4,8 @@ Spokes
 TODO
 ----
 
+* [ ] Get stream data out and display it in HTML.
+
 * * *
 
 * [x] Setup the e2e Protractor tests.
@@ -16,8 +18,8 @@ TODO
 * [x] Then it will ask for your statement of intent, in the format:
        "I want to help people with [X], and I need help with [Y]"
       A button on the bottom of the screen says "Broadcast".
-* [ ] The device should store my address book against my account.
-* [ ] There must be a stream of statements of intent with profile photos against them (and eventually 'Help' events in between them.)
+* [x] The device should store my address book against my account.
+* [x] There must be a stream of statements of intent with profile photos against them (and eventually 'Help' events in between them.)
 
 * * *
 

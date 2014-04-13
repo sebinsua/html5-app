@@ -1,9 +1,23 @@
 (function () {
   "use strict";
 
-  var spokes = angular.module('spokes', ['ionic', 'spokes.controllers']);
+  var spokes = angular.module('spokes', [
+    'ionic',
+    'restangular',
+    'angularMoment',
+    'spokes.services',
+    'spokes.controllers'
+  ]);
 
-  spokes.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
+  spokes.constant('angularMomentConfig', {
+    preprocess: 'unix', // optional
+    timezone: 'Europe/London' // optional
+  });
+
+  spokes.config(['RestangularProvider', '$stateProvider', '$urlRouterProvider', function (RestangularProvider, $stateProvider, $urlRouterProvider) {
+    var API_URL = 'http://spokes-api.herokuapp.com/api/';
+
+    RestangularProvider.setBaseUrl('http://localhost:3000/api/');
 
     $stateProvider
       .state('value-proposition', {
@@ -15,6 +29,10 @@
         url: "/sign-in",
         templateUrl: "./templates/sign-in.html",
         controller: 'SignInCtrl'
+      })
+      .state('sign-out', {
+        url: "/sign-out",
+        controller: 'SignOutCtrl'
       })
       .state('join', {
         url: "/join",
