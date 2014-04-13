@@ -4,7 +4,7 @@ Spokes
 TODO
 ----
 
-* Work out how the text will be entered on the proposition page.
+* Why is the image submit not working?
 
 * * *
 

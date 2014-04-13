@@ -33,11 +33,6 @@ var paths = {
   ]
 };
 
-gulp.task('init', function (done) {
-  console.log('Installing latest stable release of Ionic from bower');
-  return bower.commands.install().on('end', done);
-});
-
 gulp.task('lint', function (done) {
   gulp.src(paths.js)
       .pipe(jshint())
