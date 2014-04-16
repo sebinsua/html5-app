@@ -7,7 +7,7 @@ TODO
 * [x] Why is no data making rows appear? the fuck.
 * [x] Can I create a user?
 * [x] Can I validate the form?
-* [ ] Will it create a proposal when I create a user?
+* [x] Will it create a proposal when I create a user?
 * [ ] Can I get a user Ids list of notifications.
 * [ ] Can I edit the user? (Hardcode the user id.)
 * [ ] Can I visit a profile?

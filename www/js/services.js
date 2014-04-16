@@ -15,17 +15,47 @@
     var users = Restangular.all('users');
 
     this.create = function (userData) {
-      var validatedUser = {
+      var user = {
         'name': userData.name,
         'email': userData.email,
-        'country': userData.country,
-        'gender': userData.gender,
+        'country': userData.country.name,
+        'gender': userData.gender.value,
         'birthDate': userData.birthDate,
         'mobileNumber': userData.mobileNumberPrefix + ' ' + userData.mobileNumber,
         'meetingPlace': userData.meetingPlace
       };
 
-      return users.post(validatedUser);
+      var proposal = {};
+      if (userData.offer) {
+        proposal.offer = {
+          description: userData.offer
+        };
+      }
+      if (userData.request) {
+        proposal.request = {
+          description: userData.request
+        };
+      }
+
+      return users.post(user).then(function (response) {
+        var userId = response.id;
+
+        var userProposals = Restangular.one('users', userId).all('proposals');
+        return userProposals.post(proposal);
+      });
+    };
+
+    this.getById = function (userId) {
+
+    };
+
+    this.edit = function (userId, userData) {
+
+    };
+
+    this.getNotificationsById = function (userId) {
+      var userNotifications = Restangular.one('users', userId).all('notifications');
+      return userNotifications.getList();
     };
   }]);
 
