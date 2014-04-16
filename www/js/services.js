@@ -11,4 +11,22 @@
     };
   }]);
 
+  services.service('UsersService', ['Restangular', function (Restangular) {
+    var users = Restangular.all('users');
+
+    this.create = function (userData) {
+      var validatedUser = {
+        'name': userData.name,
+        'email': userData.email,
+        'country': userData.country,
+        'gender': userData.gender,
+        'birthDate': userData.birthDate,
+        'mobileNumber': userData.mobileNumberPrefix + ' ' + userData.mobileNumber,
+        'meetingPlace': userData.meetingPlace
+      };
+
+      return users.post(validatedUser);
+    };
+  }]);
+
 })();

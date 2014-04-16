@@ -4,22 +4,23 @@ Spokes
 TODO
 ----
 
-* [ ] Get stream data out and display it in HTML.
+* [x] Why is no data making rows appear? the fuck.
+* [x] Can I create a user?
+* [x] Can I validate the form?
+* [ ] Will it create a proposal when I create a user?
+* [ ] Can I get a user Ids list of notifications.
+* [ ] Can I edit the user? (Hardcode the user id.)
+* [ ] Can I visit a profile?
+* [ ] Can I notify via a profile?
+* [ ] The device should store my address book against my account.
+* [ ] Can I create a new proposal?
+* [ ] Can I store the profile photo somewhere?
+* [ ] Can I logout? (Redirect only but check other people's code.)
+
 
 * * *
 
-* [x] Setup the e2e Protractor tests.
-* [x] There must be a loading screen. There must be a screen with a register/login button.
-* [x] I must be able to register with my country locked phone number and name.
-* [x] The next screen will ask for further information:
-      - profile photo
-      - name
-      - city
-* [x] Then it will ask for your statement of intent, in the format:
-       "I want to help people with [X], and I need help with [Y]"
-      A button on the bottom of the screen says "Broadcast".
-* [x] The device should store my address book against my account.
-* [x] There must be a stream of statements of intent with profile photos against them (and eventually 'Help' events in between them.)
+* [ ] LinkedIn authentication.
 
 * * *
 
@@ -44,7 +45,12 @@ TODO
 
 Tech Considerations?
 
-https://github.com/mgonto/restangular
+http://forum.ionicframework.com/t/how-to-make-uploading-files-or-images-using-ionicframwork-or-angularjs/391/9
+
+http://docs.angularjs.org/guide/forms
+http://docs.angularjs.org/api/ng/directive/ngModel
+
+Nice looking site: https://www.facebook.com/mobile/messenger
 
 http://famo.us
 
@@ -127,7 +133,7 @@ People that want to "locally source" these people if at all possible.
 
 People that want to build their reputation by helping others.
 
-People that want to occassionally brush with greatness.
+People that want to occasionally brush with greatness.
 
 People that want to be insured that those that they do business with are reputable.
 

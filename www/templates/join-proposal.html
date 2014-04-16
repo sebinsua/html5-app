@@ -1,19 +1,23 @@
 <ion-view title="">
-    <ion-content scroll="false">
-        <div class="proposal">
-            <span class="offer">
-                <span class="static">I want to help</span> <input type="text" class="dynamic inline-input" />
-            </span>
-            <span class="conjunction">and</span>
-            <span class="request">
-                <span class="static">I need help</span> <input type="text" class="dynamic inline-input" />
-            </span>
-        </div>
-    </ion-content>
+    <form name="proposal">
+        <ion-content scroll="false">
+            <div class="proposal">
+                <span class="offer">
+                    <span class="static">I want to help</span> <input ng-model="account.offer" type="text" class="dynamic inline-input" />
+                </span>
+                <span class="conjunction">and</span>
+                <span class="request">
+                    <span class="static">I need help</span> <input ng-model="account.request" type="text" class="dynamic inline-input" />
+                </span>
+            </div>
+        </ion-content>
 
-    <ion-footer-bar class="bar bar-footer">
-        <button ng-click="register()" class="button button-positive footer-wide-button">
-            Broadcast
-        </button>
-    </ion-footer-bar>
+        <ion-footer-bar class="bar bar-footer">
+            <button ng-click="register()"
+                    ng-disabled="proposal.$invalid"
+                    class="button button-positive footer-wide-button">
+                Broadcast
+            </button>
+        </ion-footer-bar>
+    </form>
 </ion-view>

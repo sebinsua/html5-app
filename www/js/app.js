@@ -6,6 +6,7 @@
     'restangular',
     'angularMoment',
     'spokes.services',
+    'spokes.factories',
     'spokes.controllers'
   ]);
 
@@ -61,6 +62,12 @@
 
         templateUrl: "./templates/menu.html",
         controller: 'AppCtrl'
+      })
+      .state('app.edit-account', {
+        url: '/account',
+
+        templateUrl: "./templates/edit-account.html",
+        controller: 'EditAccountCtrl'
       })
       .state('app.proposal', {
         url: '/proposal',
