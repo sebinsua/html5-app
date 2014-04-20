@@ -7,12 +7,16 @@ TODO
 * [x] Can I load the profile using the user Id?
 * [x] Fix so that we slide to the notifications view.
 
+* [ ] Store the session/userId for phonegap/ionic/angular, perhaps inside localstorage?
+
+* [ ] The device should store my address book against my account.
+* [ ] Can I store the profile photo somewhere?
+
 * [ ] Can I display a user Ids list of notifications.
 * [ ] Can I edit the user? (Hardcode the user id.)
 
 * [ ] Can I notify via a profile?
-* [ ] The device should store my address book against my account.
-* [ ] Can I store the profile photo somewhere?
+
 * [ ] Can I create a new proposal?
 
 * * *
