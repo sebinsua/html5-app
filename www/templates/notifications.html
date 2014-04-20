@@ -1,9 +1,15 @@
-<ion-view title="loading-screen">
+<ion-view title="Notifications">
     <ion-content>
-        <h1>Browse</h1>
 
-        <a ui-sref="app.home" class="button button-block button-positive">
-            Start
-        </a>
+        <div class="list">
+            <div class="card" ng-repeat="item in items">
+                <div class="item item-avatar">
+                    <img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcS1EU8EJBTdM0hXV0IblhvWTJ-XIsQBb_yNtk9Bc7NqSr-aWNN7yA" />
+                    <h2>{{item.user.name}}</h2>
+                    <p am-time-ago="item.request.created"></p>
+                </div>
+            </div>
+        </div>
+
     </ion-content>
 </ion-view>

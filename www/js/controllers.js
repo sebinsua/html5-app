@@ -17,6 +17,7 @@
 
   controllers.controller('SignOutCtrl', ['$scope', '$state', function ($scope, $state) {
     console.log("Sign Out: This is executed.");
+    $state.go('sign-in');
   }]);
 
   controllers.controller('JoinBasicCtrl', [
@@ -164,8 +165,24 @@
     console.log("App: This is executed.");
   }]);
 
-  controllers.controller('EditAccountCtrl', ['$scope', function ($scope) {
+  controllers.controller('EditAccountCtrl', ['$scope', 'UsersService', function ($scope, UsersService) {
     console.log("Edit Account: This is executed.");
+
+    $scope.genders = [
+      { value: 'F', name: 'Female' },
+      { value: 'M', name: 'Male' },
+      { value: '-', name: 'Other' }
+    ];
+
+    $scope.account = {};
+
+    $scope.update = function updateAccount() {
+      var userId = "1";
+      var userObject = {};
+      return UsersService.edit(userId, userObject).then(function (items) {
+        $scope.items = items;
+      });
+    };
   }]);
 
   controllers.controller('StreamCtrl', ['$scope', 'StreamService', function ($scope, StreamService) {
@@ -185,12 +202,30 @@
     $scope.items = $scope.getStream().$object;
   }]);
 
-  controllers.controller('ProfileCtrl', ['$scope', function ($scope) {
+  controllers.controller('ProfileCtrl', ['$scope', '$stateParams', 'UsersService', function ($scope, $stateParams, UsersService) {
     console.log("Profile: This is executed.");
+
+    var getUser = function getUser() {
+      var userId = $stateParams.userId;
+      return UsersService.getById(userId).then(function (user) {
+        $scope.user = user;
+      });
+    };
+
+    $scope.user = getUser().$object;
   }]);
 
-  controllers.controller('NotificationsCtrl', ['$scope', function ($scope) {
+  controllers.controller('NotificationsCtrl', ['$scope', 'UsersService', function ($scope, UsersService) {
     console.log("Notifications: This is executed.");
+
+    var getNotifications = function getNotifications() {
+      var userId = "1";
+      return UsersService.getNotificationsById(userId).then(function (items) {
+        $scope.items = items;
+      });
+    };
+
+    $scope.notifications = getNotifications().$object;
   }]);
 
 })();

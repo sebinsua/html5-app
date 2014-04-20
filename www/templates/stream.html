@@ -1,10 +1,11 @@
 <ion-view title="Spokes" hide-back-button="true">
+
     <ion-nav-buttons side="left">
         <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
     </ion-nav-buttons>
 
     <ion-nav-buttons side="right">
-        <button class="button button-icon icon ion-ios7-email-outline"></button>
+        <button ui-sref="app.notifications" class="button button-icon icon ion-ios7-email-outline"></button>
     </ion-nav-buttons>
 
     <ion-content>
@@ -14,10 +15,11 @@
         </ion-refresher>
 
         <div class="list">
-            <div class="card" ng-repeat="item in items">
+            <div ui-sref="app.profile({ userId: item.user.id })" class="card" ng-repeat="item in items">
                 <div class="item item-avatar">
                     <img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcS1EU8EJBTdM0hXV0IblhvWTJ-XIsQBb_yNtk9Bc7NqSr-aWNN7yA" />
                     <h2>{{item.user.name}}</h2>
+                    <span>{{item.user.id}}</span>
                     <p am-time-ago="item.request.created"></p>
                 </div>
 

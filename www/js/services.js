@@ -12,7 +12,6 @@
   }]);
 
   services.service('UsersService', ['Restangular', function (Restangular) {
-    var users = Restangular.all('users');
 
     this.create = function (userData) {
       var user = {
@@ -37,6 +36,7 @@
         };
       }
 
+      var users = Restangular.all('users');
       return users.post(user).then(function (response) {
         var userId = response.id;
 
@@ -46,11 +46,13 @@
     };
 
     this.getById = function (userId) {
-
+      var user = Restangular.one('users', userId);
+      return user.get();
     };
 
     this.edit = function (userId, userData) {
-
+      var user = Restangular.one('users', userId);
+      return user.put(userData);
     };
 
     this.getNotificationsById = function (userId) {

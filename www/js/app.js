@@ -66,8 +66,12 @@
       .state('app.edit-account', {
         url: '/account',
 
-        templateUrl: "./templates/edit-account.html",
-        controller: 'EditAccountCtrl'
+        views: {
+          menuContent: {
+            templateUrl: "./templates/edit-account.html",
+            controller: 'EditAccountCtrl'
+          }
+        }
       })
       .state('app.proposal', {
         url: '/proposal',
@@ -88,7 +92,7 @@
         }
       })
       .state('app.profile', {
-        url: '/profile',
+        url: '/profile/:userId',
         views: {
           menuContent: {
             templateUrl: "./templates/profile.html",

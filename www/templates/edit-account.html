@@ -1,0 +1,44 @@
+<ion-view title="Edit Account" hide-back-button="true">
+    <ion-nav-buttons side="left">
+        <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+    </ion-nav-buttons>
+
+    <ion-content>
+        <form name="account">
+            <div class="list">
+                <div class="item" style="text-align: center">
+                    <div class="circle">
+                        <input ng-click="getImage()" type="image" ng-src="{{trustSrc(profilePhoto)}}" alt="Profile Photo" />
+                    </div>
+                </div>
+                <div class="item item-input">
+                    <label>
+                        <input ng-model="account.name" type="text" placeholder="Name" required>
+                    </label>
+                </div>
+                <div class="item item-input">
+                    <label>
+                        <input ng-model="account.email" type="email" placeholder="Email" required>
+                    </label>
+                </div>
+                <div class="item item-input">
+                    <label>
+                        <input ng-model="account.birthData" type="date" placeholder="Birth Date" required>
+                    </label>
+                </div>
+                <div class="item item-input item-select">
+                    <select ng-model="account.gender"
+                            ng-options="gender.name for gender in genders"
+                            class="gender-picker picker" required>
+                    </select>
+                </div>
+            </div>
+
+            <button ng-click="update()"
+                    ng-disabled="account.$invalid"
+                    class="button button-positive footer-wide-button">
+                Update
+            </button>
+        </form>
+    </ion-content>
+</ion-view>

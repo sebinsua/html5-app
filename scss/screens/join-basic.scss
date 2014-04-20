@@ -21,20 +21,6 @@
 a.circle { color: transparent; } /* IE fix: removes blue border */
 
 .item {
-  .picker {
-    position: relative;
-    direction: ltr;
-
-    padding-left: 0px;
-    padding-top: 8px;
-    padding-bottom: 7px;
-
-    &:focus {
-      min-width: auto;
-      width: auto;
-    }
-  }
-
   .telephone-area-code {
     max-width: 2.5em;
     padding-right: 0px;

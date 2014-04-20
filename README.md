@@ -4,23 +4,21 @@ Spokes
 TODO
 ----
 
-* [x] Why is no data making rows appear? the fuck.
-* [x] Can I create a user?
-* [x] Can I validate the form?
-* [x] Will it create a proposal when I create a user?
-* [ ] Can I get a user Ids list of notifications.
+* [x] Can I load the profile using the user Id?
+* [x] Fix so that we slide to the notifications view.
+
+* [ ] Can I display a user Ids list of notifications.
 * [ ] Can I edit the user? (Hardcode the user id.)
-* [ ] Can I visit a profile?
+
 * [ ] Can I notify via a profile?
 * [ ] The device should store my address book against my account.
-* [ ] Can I create a new proposal?
 * [ ] Can I store the profile photo somewhere?
-* [ ] Can I logout? (Redirect only but check other people's code.)
-
+* [ ] Can I create a new proposal?
 
 * * *
 
 * [ ] LinkedIn authentication.
+* [ ] Can I logout?
 
 * * *
 
