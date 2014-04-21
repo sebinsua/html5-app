@@ -4,11 +4,6 @@ Spokes
 TODO
 ----
 
-* [x] Can I load the profile using the user Id?
-* [x] Fix so that we slide to the notifications view.
-
-* [ ] Store the session/userId for phonegap/ionic/angular, perhaps inside localstorage?
-
 * [ ] The device should store my address book against my account.
 * [ ] Can I store the profile photo somewhere?
 
@@ -324,6 +319,8 @@ github
 angel.co
 linkedin
 (marketers - twitter)
+
+beggars.co is profile photo focused, grid of photos: people. think of the imagery.
 
 Spokes site will have a wheel in old-fashioned style drawing. Take a look at the breue image.
 Also take a look at Segment.IO for subduedness.

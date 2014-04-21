@@ -3,6 +3,43 @@
 
   var services = angular.module('spokes.services', ['restangular']);
 
+  services.service('AuthenticationService', [
+    '$rootScope',
+    function ($rootScope) {
+      var localStorage = window.localStorage;
+
+      // Get some ideas from this:
+      // http://www.kdmooreconsulting.com/blogs/authentication-with-ionic-and-angular-js-in-a-cordovaphonegap-mobile-web-application/
+      this.login = function (userData) {
+        console.log("Logging in...");
+        var currentAccountData = {
+          userId: '1',
+          authToken: 'abc'
+        };
+        localStorage.setItem('currentAccount', JSON.stringify(currentAccountData));
+
+        $rootScope.$broadcast('event:auth-login-success');
+        // @TODO: $rootScope.$broadcast('event:auth-login-failure');
+      };
+
+      this.isLoggedIn = function () {
+        // @TODO: Test token?
+        return true;
+      };
+
+      this.getCurrentAccount = function () {
+        return JSON.parse(localStorage.getItem('currentAccount'));
+      };
+
+      this.logout = function () {
+        console.log("Logging out...");
+        localStorage.removeItem('currentAccount');
+
+        $rootScope.$broadcast('event:auth-logout');
+      };
+    }
+  ]);
+
   services.service('StreamService', ['Restangular', function (Restangular) {
     var streamAll = Restangular.all('stream');
 

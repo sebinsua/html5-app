@@ -7,13 +7,19 @@
     console.log("Value Proposition: This is executed.");
   }]);
 
-  controllers.controller('SignInCtrl', ['$scope', '$state', function ($scope, $state) {
-    console.log("Sign In: This is executed.");
+  controllers.controller('SignInCtrl', [
+    '$scope',
+    '$state',
+    'AuthenticationService',
+    function ($scope, $state, AuthenticationService) {
+      console.log("Sign In: This is executed.");
 
-    $scope.signIn = function signIn() {
-      $state.go('join.basic');
-    };
-  }]);
+      $scope.signIn = function signIn() {
+        AuthenticationService.login();
+        $state.go('join.basic');
+      };
+    }
+  ]);
 
   controllers.controller('SignOutCtrl', ['$scope', '$state', function ($scope, $state) {
     console.log("Sign Out: This is executed.");
