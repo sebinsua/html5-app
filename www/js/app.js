@@ -25,8 +25,13 @@
       RestangularProvider.setBaseUrl('http://localhost:3000/api/');
 
       $stateProvider
-        .state('value-proposition', {
+        .state('loading-screen', {
           url: "/",
+          templateUrl: "./templates/loading-screen.html",
+          controller: 'LoadingScreenCtrl'
+        })
+        .state('value-proposition', {
+          url: "/value-proposition",
           templateUrl: "./templates/value-proposition.html",
           controller: 'ValuePropositionCtrl'
         })
@@ -124,11 +129,32 @@
     '$ionicPlatform',
     '$rootScope',
     'Restangular',
-    function ($ionicPlatform, $rootScope, Restangular) {
+    'AuthenticationService',
+    function ($ionicPlatform, $rootScope, Restangular, AuthenticationService) {
       Restangular.setErrorInterceptor(function (response) {
         if (response.status == 401) {
           $rootScope.$broadcast('event:auth-login-required');
         }
+      });
+
+      Restangular.setFullRequestInterceptor(function (element, operation, route, url, headers, params) {
+        var currentAccount = AuthenticationService.getCurrentAccount();
+
+        var newHeaders = {};
+        if (currentAccount) {
+          newHeaders = {
+            Authorization: 'Bearer ' +  currentAccount.idToken
+          };
+        }
+
+        return {
+          element: element,
+          operation: operation,
+          route: route,
+          url: url,
+          headers: _.extend(headers, newHeaders),
+          params: params
+        };
       });
 
       $rootScope.$on('event:auth-login-required', function () {

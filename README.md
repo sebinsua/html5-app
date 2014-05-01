@@ -1,8 +1,130 @@
 Spokes
 ======
 
+{
+    "auth0AccessToken": "64eTFhviQz3glG3E",
+    "idToken": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL3Nwb2tlcy5hdXRoMC5jb20vIiwic3ViIjoibGlua2VkaW58cndMNlhiQU1PeiIsImF1ZCI6IlZLdGJUMFZCMGlxWU11ZE1TbVc0REt1d1Yxc3ZxeWJNIiwiZXhwIjoxMzk5MDE0Mjk1LCJpYXQiOjEzOTg5NzgyOTV9.eCMW7q_4gelnyPMlTCbUlpDWvNXPd2MuzlLMvgUCPjY",
+    "profile": {
+        "apiStandardProfileRequest": {
+            "headers": {
+                "_total": 1,
+                "values": [{
+                    "name": "x-li-auth-token",
+                    "value": "name:iDwz"
+                }]
+            },
+            "url": "http://api.linkedin.com/v1/people/rwL6XbAMOz"
+        },
+        "clientID": "VKtbT0VB0iqYMudMSmW4DKuwV1svqybM",
+        "created_at": "2014-05-01T21:04:55.871Z",
+        "currentShare": {
+            "attribution": {
+                "share": {
+                    "author": {
+                        "firstName": "Ben",
+                        "id": "9X3ZTSmkkf",
+                        "lastName": "Cullen"
+                    },
+                    "id": "s5867370226705797120"
+                }
+            },
+            "author": {
+                "firstName": "Seb",
+                "id": "rwL6XbAMOz",
+                "lastName": "Insua"
+            },
+            "comment": "A recruiter complaining about only getting 15% of your wage?\r\n\r\nGreed.",
+            "content": {
+                "eyebrowUrl": "http://www.linkedin.com/share?viewLink=&sid=s5861226946863603712&url=http%3A%2F%2Flnkd%2Ein%2Fdf7EQ73&urlhash=LRyM",
+                "resolvedUrl": "http://image-store.slidesharecdn.com/5fb68ac0-c157-11e3-9a6c-12313b0a34a4-large.jpeg",
+                "shortenedUrl": "http://lnkd.in/df7EQ73",
+                "submittedImageUrl": "http://image-store.slidesharecdn.com/5fb68ac0-c157-11e3-9a6c-12313b0a34a4-large.jpeg",
+                "submittedUrl": "http://image-store.slidesharecdn.com/5fb68ac0-c157-11e3-9a6c-12313b0a34a4-large.jpeg",
+                "thumbnailUrl": "https://media.licdn.com/media-proxy/ext?w=80&h=100&hash=eqLDgPGlDl87FZKd7ffoQibXEE8%3D&url=http%3A%2F%2Fimage-store.slidesharecdn.com%2F5fb68ac0-c157-11e3-9a6c-12313b0a34a4-large.jpeg",
+                "title": "aint nobody got time for that.jpg"
+            },
+            "id": "s5861226946863603712",
+            "source": {
+                "serviceProvider": {
+                    "name": "LINKEDIN"
+                }
+            },
+            "timestamp": 1397425400000,
+            "visibility": {
+                "code": "anyone"
+            }
+        },
+        "distance": 0,
+        "family_name": "Insua",
+        "given_name": "Seb",
+        "headline": "Technology Consultant, Architect & Engineer",
+        "identities": [{
+            "access_token": "AQUqUWGbJ6qfaO5yklpPwtvBWyC3H8CeVBCXNOY-clBhbng2hfacl-EFclhMAd5oS19b1QObD1SdYcx2Z9ohaCq6CG6J2QJWYeS-ffDpbKF8JwASvovkDJQtIdUl8f5rrZQ-QLcNa-dG84MIIhOfi5p4L_1ToojX4PZhWrtvK6AmWGvkqWw",
+            "provider": "linkedin",
+            "user_id": "rwL6XbAMOz",
+            "connection": "linkedin",
+            "isSocial": true
+        }],
+        "industry": "Computer Software",
+        "location": {
+            "country": {
+                "code": "gb"
+            },
+            "name": "London, United Kingdom"
+        },
+        "name": "Seb Insua",
+        "nickname": "Seb Insua",
+        "numConnections": 500,
+        "numConnectionsCapped": true,
+        "picture": "http://m.c.lnkd.licdn.com/mpr/mprx/0_fDcXEj4wG2AooyjX7urcEYVwCHnIeyuXSoiUEYWcgDCVB4Uk_IFHXOjJuQ9zIUSHaazV5JBGzXb5",
+        "positions": {
+            "_total": 2,
+            "values": [{
+                "company": {
+                    "id": 1032792,
+                    "industry": "Computer Software",
+                    "name": "Red Badger",
+                    "size": "11-50 employees",
+                    "type": "Privately Held"
+                },
+                "id": 524582005,
+                "isCurrent": true,
+                "startDate": {
+                    "month": 3,
+                    "year": 2014
+                },
+                "title": "Contract Node.JS Engineer"
+            }, {
+                "company": {
+                    "industry": "Computer Software",
+                    "name": "Momentum Labs"
+                },
+                "id": 421482855,
+                "isCurrent": true,
+                "startDate": {
+                    "month": 6,
+                    "year": 2013
+                },
+                "summary": "Technology consultancy, contracting, freelancing, startup ideas and open-source projects.\n\n• One-week full integration of analytics into all of CrowdSurge's stores to help visualise user flows with funnels, segmentation, etc.\n\n• An Express.js middleware to allow one-line installation of analytics into Node.JS projects for the 500 Startups backed startup Keen IO. This was suggested as a way of reducing the integration time of their analytics service from multiple hours/days to around 15 seconds.\n\nLaunched here: https://keen.io/blog/78561215787/how-to-install-keen-io-analytics-into-your-node-js-app\n\nBased on this work, the Keen IO team recommended me to the AirPair.com community as an expert on Analytics, JavaScript and their API.",
+                "title": "Director"
+            }]
+        },
+        "publicProfileUrl": "http://www.linkedin.com/in/heyseb",
+        "relationToViewer": {
+            "distance": 0
+        },
+        "siteStandardProfileRequest": {
+            "url": "http://www.linkedin.com/profile/view?id=49839058&authType=name&authToken=iDwz&trk=api*a266483*s274221*"
+        },
+        "summary": "I want to help you realise your ideas by helping architect, develop and manage the creation of mobile apps and websites.\n\nMy speciality is in combining strong technical knowledge with lateral thinking.\n\nI can help you to build out a product on both the back-end and front-end as well as with assembling and leading technical teams.\n\nI understand business/market fundamentals and can help you in the creation of a working business model with the technical costs factored in.\n\nI enjoy broadening my mind with books and articles on many different disciplines. On the tech-side recently I favour lean development, BDD, the Twelve-Factor App, and the simplicity espoused in Rich Hickey's \"Simple Made Easy\" as the best ways of ensuring high-quality code. I've worked with many different technologies over the years, but it's this knowledge that I feel is most important.\n\nDon't hesitate to get in touch if you think I can help you in any way.\n\nTwitter: http://twitter.com/sebinsua\nGithub: https://github.com/sebinsua\nBlog: http://sebinsua.com\nEmail: me@sebinsua.com",
+        "user_id": "linkedin|rwL6XbAMOz"
+    }
+}
+
 TODO
 ----
+
+* [x] Check the currentAccount and use this to decide whether to load the App or not.
 
 * [ ] The device should store my address book against my account.
 * [ ] Can I store the profile photo somewhere?
@@ -16,8 +138,8 @@ TODO
 
 * * *
 
-* [ ] LinkedIn authentication.
-* [ ] Can I logout?
+* [x] LinkedIn authentication.
+* [x] Can I logout?
 
 * * *
 
@@ -39,6 +161,125 @@ TODO
  vertical timeline.
 * [ ] If somebody has accepted your request to meetup, the button will be replaced with
       "Converse" which will load a chat screen similar to the one on Whatsapp.
+
+* Use the $window.
+* Can I get a basic APP prototype in my hand before the 24th?
+* gyp: binding.gyp not found (cwd: /app)
+  gyp ERR! configure error
+* get bcrypt installed, too.
+* * *
+
+Running `npm install hiredis` attached to terminal... up, run.3083
+npm http GET https://registry.npmjs.org/hiredis
+npm http 200 https://registry.npmjs.org/hiredis
+npm http GET https://registry.npmjs.org/hiredis/-/hiredis-0.1.16.tgz
+npm http 200 https://registry.npmjs.org/hiredis/-/hiredis-0.1.16.tgz
+npm http GET https://registry.npmjs.org/bindings
+npm http 200 https://registry.npmjs.org/bindings
+npm http GET https://registry.npmjs.org/bindings/-/bindings-1.2.0.tgz
+npm http 200 https://registry.npmjs.org/bindings/-/bindings-1.2.0.tgz
+
+> hiredis@0.1.16 install /app/node_modules/hiredis
+> node-gyp rebuild
+
+gyp http GET http://nodejs.org/dist/v0.11.12/node-v0.11.12.tar.gz
+gyp http 200 http://nodejs.org/dist/v0.11.12/node-v0.11.12.tar.gz
+make: Entering directory `/app/node_modules/hiredis/build'
+  CC(target) Release/obj.target/hiredis/deps/hiredis/hiredis.o
+  CC(target) Release/obj.target/hiredis/deps/hiredis/net.o
+  CC(target) Release/obj.target/hiredis/deps/hiredis/sds.o
+  CC(target) Release/obj.target/hiredis/deps/hiredis/async.o
+  AR(target) Release/obj.target/deps/hiredis.a
+  COPY Release/hiredis.a
+  CXX(target) Release/obj.target/hiredis/src/hiredis.o
+In file included from ../src/hiredis.cc:3:
+../src/reader.h:11: error: expected class-name before '{' token
+../src/reader.h:17: error: ISO C++ forbids declaration of 'Arguments' with no type
+../src/reader.h:17: error: expected ',' or '...' before '&' token
+../src/reader.h:18: error: ISO C++ forbids declaration of 'Arguments' with no type
+../src/reader.h:18: error: expected ',' or '...' before '&' token
+../src/reader.h:19: error: ISO C++ forbids declaration of 'Arguments' with no type
+../src/reader.h:19: error: expected ',' or '...' before '&' token
+/app/.node-gyp/0.11.12/deps/v8/include/v8.h: In function 'void init(v8::Handle<v8::Object>)':
+/app/.node-gyp/0.11.12/deps/v8/include/v8.h:768: error: 'v8::HandleScope::HandleScope()' is private
+../src/hiredis.cc:9: error: within this context
+make: *** [Release/obj.target/hiredis/src/hiredis.o] Error 1
+make: Leaving directory `/app/node_modules/hiredis/build'
+gyp ERR! build error
+gyp ERR! stack Error: `make` failed with exit code: 2
+gyp ERR! stack     at ChildProcess.onExit (/app/vendor/node/lib/node_modules/npm/node_modules/node-gyp/lib/build.js:267:23)
+gyp ERR! stack     at ChildProcess.EventEmitter.emit (events.js:107:17)
+gyp ERR! stack     at Process.ChildProcess._handle.onexit (child_process.js:1045:12)
+gyp ERR! System Linux 3.8.11-ec2
+gyp ERR! command "node" "/app/vendor/node/lib/node_modules/npm/node_modules/node-gyp/bin/node-gyp.js" "rebuild"
+gyp ERR! cwd /app/node_modules/hiredis
+gyp ERR! node -v v0.11.12
+gyp ERR! node-gyp -v v0.12.2
+gyp ERR! not ok
+npm ERR! hiredis@0.1.16 install: `node-gyp rebuild`
+npm ERR! Exit status 1
+npm ERR!
+npm ERR! Failed at the hiredis@0.1.16 install script.
+npm ERR! This is most likely a problem with the hiredis package,
+npm ERR! not with npm itself.
+npm ERR! Tell the author that this fails on your system:
+npm ERR!     node-gyp rebuild
+npm ERR! You can get their info via:
+npm ERR!     npm owner ls hiredis
+npm ERR! There is likely additional logging output above.
+
+npm ERR! System Linux 3.8.11-ec2
+npm ERR! command "/app/vendor/node/bin/node" "/app/vendor/node/bin/npm" "install" "hiredis"
+npm ERR! cwd /app
+npm ERR! node -v v0.11.12
+npm ERR! npm -v 1.4.3
+npm ERR! code ELIFECYCLE
+npm ERR!
+npm ERR! Additional logging details can be found in:
+npm ERR!     /app/npm-debug.log
+npm ERR! not ok code 0
+
+
+heroku run "node" "/app/vendor/node/lib/node_modules/npm/node_modules/node-gyp/bin/node-gyp.js" "rebuild"
+Running `node /app/vendor/node/lib/node_modules/npm/node_modules/node-gyp/bin/node-gyp.js rebuild` attached to terminal... up, run.5777
+gyp info it worked if it ends with ok
+gyp info using node-gyp@0.12.2
+gyp info using node@0.11.12 | linux | x64
+gyp http GET http://nodejs.org/dist/v0.11.12/node-v0.11.12.tar.gz
+gyp http 200 http://nodejs.org/dist/v0.11.12/node-v0.11.12.tar.gz
+gyp info spawn python
+gyp info spawn args [ '/app/vendor/node/lib/node_modules/npm/node_modules/node-gyp/gyp/gyp_main.py',
+gyp info spawn args   'binding.gyp',
+gyp info spawn args   '-f',
+gyp info spawn args   'make',
+gyp info spawn args   '-I',
+gyp info spawn args   '/app/build/config.gypi',
+gyp info spawn args   '-I',
+gyp info spawn args   '/app/vendor/node/lib/node_modules/npm/node_modules/node-gyp/addon.gypi',
+gyp info spawn args   '-I',
+gyp info spawn args   '/app/.node-gyp/0.11.12/common.gypi',
+gyp info spawn args   '-Dlibrary=shared_library',
+gyp info spawn args   '-Dvisibility=default',
+gyp info spawn args   '-Dnode_root_dir=/app/.node-gyp/0.11.12',
+gyp info spawn args   '-Dmodule_root_dir=/app',
+gyp info spawn args   '--depth=.',
+gyp info spawn args   '--generator-output',
+gyp info spawn args   'build',
+gyp info spawn args   '-Goutput_dir=.' ]
+gyp: binding.gyp not found (cwd: /app)
+gyp ERR! configure error
+gyp ERR! stack Error: `gyp` failed with exit code: 1
+gyp ERR! stack     at ChildProcess.onCpExit (/app/vendor/node/lib/node_modules/npm/node_modules/node-gyp/lib/configure.js:337:16)
+gyp ERR! stack     at ChildProcess.EventEmitter.emit (events.js:107:17)
+gyp ERR! stack     at Process.ChildProcess._handle.onexit (child_process.js:1045:12)
+gyp ERR! System Linux 3.8.11-ec2
+gyp ERR! command "node" "/app/vendor/node/lib/node_modules/npm/node_modules/node-gyp/bin/node-gyp.js" "rebuild"
+gyp ERR! cwd /app
+gyp ERR! node -v v0.11.12
+gyp ERR! node-gyp -v v0.12.2
+gyp ERR! not ok
+
+* * *
 
 Tech Considerations?
 

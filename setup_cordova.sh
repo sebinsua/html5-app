@@ -6,3 +6,4 @@ cordova plugin add org.apache.cordova.console;
 cordova plugin add org.apache.cordova.device;
 cordova plugin add org.apache.cordova.statusbar;
 cordova plugin add org.apache.cordova.contacts;
+cordova plugin add https://github.com/auth0/phonegap-auth0.git;

@@ -3,6 +3,20 @@
 
   var controllers = angular.module('spokes.controllers', []);
 
+  controllers.controller('LoadingScreenCtrl', [
+    '$state',
+    'AuthenticationService',
+    function ($state, AuthenticationService) {
+      if (AuthenticationService.isLoggedIn()) {
+        console.log("Already logged in, so loading the stream...");
+        $state.go('app.stream', {}, { location: "replace" });
+      } else {
+        console.log("Not logged in, so ");
+        $state.go('value-proposition', {}, { location: "replace" });
+      }
+    }
+  ]);
+
   controllers.controller('ValuePropositionCtrl', ['$scope', function ($scope) {
     console.log("Value Proposition: This is executed.");
   }]);
@@ -20,11 +34,6 @@
       };
     }
   ]);
-
-  controllers.controller('SignOutCtrl', ['$scope', '$state', function ($scope, $state) {
-    console.log("Sign Out: This is executed.");
-    $state.go('sign-in');
-  }]);
 
   controllers.controller('JoinBasicCtrl', [
     '$scope',
@@ -167,8 +176,15 @@
     console.log("Proposal: This is executed.");
   }]);
 
-  controllers.controller('AppCtrl', ['$scope', function ($scope) {
+  controllers.controller('AppCtrl', ['$scope', '$ionicViewService', '$state', 'AuthenticationService', function ($scope, $ionicViewService, $state, AuthenticationService) {
     console.log("App: This is executed.");
+
+    $scope.signOut = function signOut() {
+      AuthenticationService.logout();
+      // @TODO: This currently isn't clearing the view history. Not that it matters much yet.
+      $ionicViewService.clearHistory();
+      $state.go('value-proposition', {}, { location: "replace" });
+    };
   }]);
 
   controllers.controller('EditAccountCtrl', ['$scope', 'UsersService', function ($scope, UsersService) {

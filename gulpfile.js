@@ -4,6 +4,7 @@
 var bower = require('bower');
 
 var gulp = require('gulp'),
+  listing = require('gulp-task-listing'),
   concat = require('gulp-concat'),
   sass = require('gulp-sass'),
   minifyCss = require('gulp-minify-css'),
@@ -177,6 +178,8 @@ gulp.task('run-ios', ['sass'], function (done) {
     done();
   });
 });
+
+gulp.task('help', listing);
 
 gulp.task('test', ['lint', 'test-unit', 'test-e2e']);
 gulp.task('emulate', ['emulate-ios']);

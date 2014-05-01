@@ -5,30 +5,61 @@
 
   services.service('AuthenticationService', [
     '$rootScope',
-    function ($rootScope) {
+    '$q',
+    function ($rootScope, $q) {
       var localStorage = window.localStorage;
+
+      var DOMAIN = "spokes.auth0.com";
+      var CLIENT_ID = "VKtbT0VB0iqYMudMSmW4DKuwV1svqybM";
+
+      var _login = function () {
+        var deferred = $q.defer();
+
+        var isAuth0PluginLoaded = !!window.Auth0Client;
+        if (isAuth0PluginLoaded) {
+          var auth0 = new Auth0Client(DOMAIN, CLIENT_ID);
+          auth0.login({ connection: "linkedin" }, function (err, result) {
+            if (err) {
+              return deferred.reject(err);
+            }
+
+            deferred.resolve(result);
+          });
+        } else {
+          deferred.resolve({
+            "auth0AccessToken": "64eTFhviQz3glG3E",
+            "idToken": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL3Nwb2tlcy5hdXRoMC5jb20vIiwic3ViIjoibGlua2VkaW58cndMNlhiQU1PeiIsImF1ZCI6IlZLdGJUMFZCMGlxWU11ZE1TbVc0REt1d1Yxc3ZxeWJNIiwiZXhwIjoxMzk5MDE0Mjk1LCJpYXQiOjEzOTg5NzgyOTV9.eCMW7q_4gelnyPMlTCbUlpDWvNXPd2MuzlLMvgUCPjY",
+            "profile": {}
+          });
+        }
+
+        return deferred.promise;
+      };
 
       // Get some ideas from this:
       // http://www.kdmooreconsulting.com/blogs/authentication-with-ionic-and-angular-js-in-a-cordovaphonegap-mobile-web-application/
-      this.login = function (userData) {
+      this.login = function () {
         console.log("Logging in...");
-        var currentAccountData = {
-          userId: '1',
-          authToken: 'abc'
-        };
-        localStorage.setItem('currentAccount', JSON.stringify(currentAccountData));
-
-        $rootScope.$broadcast('event:auth-login-success');
-        // @TODO: $rootScope.$broadcast('event:auth-login-failure');
+        _login().then(function (currentAccountData) {
+          localStorage.setItem('currentAccount', JSON.stringify(currentAccountData));
+          $rootScope.$broadcast('event:auth-login-success');
+        }, function (err) {
+          // @TODO: $rootScope.$broadcast('event:auth-login-failure');
+          console.log(err);
+        });
       };
 
       this.isLoggedIn = function () {
         // @TODO: Test token?
-        return true;
+        return this.getCurrentAccount() !== false;
       };
 
       this.getCurrentAccount = function () {
-        return JSON.parse(localStorage.getItem('currentAccount'));
+        var currentAccountString = localStorage.getItem('currentAccount');
+        if (currentAccountString && currentAccountString.length) {
+          return JSON.parse(currentAccountString);
+        }
+        return false;
       };
 
       this.logout = function () {
