@@ -40,12 +40,13 @@
       // http://www.kdmooreconsulting.com/blogs/authentication-with-ionic-and-angular-js-in-a-cordovaphonegap-mobile-web-application/
       this.login = function () {
         console.log("Logging in...");
-        _login().then(function (currentAccountData) {
+        return _login().then(function (currentAccountData) {
           localStorage.setItem('currentAccount', JSON.stringify(currentAccountData));
-          $rootScope.$broadcast('event:auth-login-success');
+          $rootScope.$broadcast('event:auth-login-success', currentAccountData.profile);
+          return currentAccountData.profile;
         }, function (err) {
-          // @TODO: $rootScope.$broadcast('event:auth-login-failure');
           console.log(err);
+          $rootScope.$broadcast('event:auth-login-failure');
         });
       };
 

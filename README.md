@@ -1,145 +1,22 @@
 Spokes
 ======
 
-{
-    "auth0AccessToken": "64eTFhviQz3glG3E",
-    "idToken": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL3Nwb2tlcy5hdXRoMC5jb20vIiwic3ViIjoibGlua2VkaW58cndMNlhiQU1PeiIsImF1ZCI6IlZLdGJUMFZCMGlxWU11ZE1TbVc0REt1d1Yxc3ZxeWJNIiwiZXhwIjoxMzk5MDE0Mjk1LCJpYXQiOjEzOTg5NzgyOTV9.eCMW7q_4gelnyPMlTCbUlpDWvNXPd2MuzlLMvgUCPjY",
-    "profile": {
-        "apiStandardProfileRequest": {
-            "headers": {
-                "_total": 1,
-                "values": [{
-                    "name": "x-li-auth-token",
-                    "value": "name:iDwz"
-                }]
-            },
-            "url": "http://api.linkedin.com/v1/people/rwL6XbAMOz"
-        },
-        "clientID": "VKtbT0VB0iqYMudMSmW4DKuwV1svqybM",
-        "created_at": "2014-05-01T21:04:55.871Z",
-        "currentShare": {
-            "attribution": {
-                "share": {
-                    "author": {
-                        "firstName": "Ben",
-                        "id": "9X3ZTSmkkf",
-                        "lastName": "Cullen"
-                    },
-                    "id": "s5867370226705797120"
-                }
-            },
-            "author": {
-                "firstName": "Seb",
-                "id": "rwL6XbAMOz",
-                "lastName": "Insua"
-            },
-            "comment": "A recruiter complaining about only getting 15% of your wage?\r\n\r\nGreed.",
-            "content": {
-                "eyebrowUrl": "http://www.linkedin.com/share?viewLink=&sid=s5861226946863603712&url=http%3A%2F%2Flnkd%2Ein%2Fdf7EQ73&urlhash=LRyM",
-                "resolvedUrl": "http://image-store.slidesharecdn.com/5fb68ac0-c157-11e3-9a6c-12313b0a34a4-large.jpeg",
-                "shortenedUrl": "http://lnkd.in/df7EQ73",
-                "submittedImageUrl": "http://image-store.slidesharecdn.com/5fb68ac0-c157-11e3-9a6c-12313b0a34a4-large.jpeg",
-                "submittedUrl": "http://image-store.slidesharecdn.com/5fb68ac0-c157-11e3-9a6c-12313b0a34a4-large.jpeg",
-                "thumbnailUrl": "https://media.licdn.com/media-proxy/ext?w=80&h=100&hash=eqLDgPGlDl87FZKd7ffoQibXEE8%3D&url=http%3A%2F%2Fimage-store.slidesharecdn.com%2F5fb68ac0-c157-11e3-9a6c-12313b0a34a4-large.jpeg",
-                "title": "aint nobody got time for that.jpg"
-            },
-            "id": "s5861226946863603712",
-            "source": {
-                "serviceProvider": {
-                    "name": "LINKEDIN"
-                }
-            },
-            "timestamp": 1397425400000,
-            "visibility": {
-                "code": "anyone"
-            }
-        },
-        "distance": 0,
-        "family_name": "Insua",
-        "given_name": "Seb",
-        "headline": "Technology Consultant, Architect & Engineer",
-        "identities": [{
-            "access_token": "AQUqUWGbJ6qfaO5yklpPwtvBWyC3H8CeVBCXNOY-clBhbng2hfacl-EFclhMAd5oS19b1QObD1SdYcx2Z9ohaCq6CG6J2QJWYeS-ffDpbKF8JwASvovkDJQtIdUl8f5rrZQ-QLcNa-dG84MIIhOfi5p4L_1ToojX4PZhWrtvK6AmWGvkqWw",
-            "provider": "linkedin",
-            "user_id": "rwL6XbAMOz",
-            "connection": "linkedin",
-            "isSocial": true
-        }],
-        "industry": "Computer Software",
-        "location": {
-            "country": {
-                "code": "gb"
-            },
-            "name": "London, United Kingdom"
-        },
-        "name": "Seb Insua",
-        "nickname": "Seb Insua",
-        "numConnections": 500,
-        "numConnectionsCapped": true,
-        "picture": "http://m.c.lnkd.licdn.com/mpr/mprx/0_fDcXEj4wG2AooyjX7urcEYVwCHnIeyuXSoiUEYWcgDCVB4Uk_IFHXOjJuQ9zIUSHaazV5JBGzXb5",
-        "positions": {
-            "_total": 2,
-            "values": [{
-                "company": {
-                    "id": 1032792,
-                    "industry": "Computer Software",
-                    "name": "Red Badger",
-                    "size": "11-50 employees",
-                    "type": "Privately Held"
-                },
-                "id": 524582005,
-                "isCurrent": true,
-                "startDate": {
-                    "month": 3,
-                    "year": 2014
-                },
-                "title": "Contract Node.JS Engineer"
-            }, {
-                "company": {
-                    "industry": "Computer Software",
-                    "name": "Momentum Labs"
-                },
-                "id": 421482855,
-                "isCurrent": true,
-                "startDate": {
-                    "month": 6,
-                    "year": 2013
-                },
-                "summary": "Technology consultancy, contracting, freelancing, startup ideas and open-source projects.\n\n• One-week full integration of analytics into all of CrowdSurge's stores to help visualise user flows with funnels, segmentation, etc.\n\n• An Express.js middleware to allow one-line installation of analytics into Node.JS projects for the 500 Startups backed startup Keen IO. This was suggested as a way of reducing the integration time of their analytics service from multiple hours/days to around 15 seconds.\n\nLaunched here: https://keen.io/blog/78561215787/how-to-install-keen-io-analytics-into-your-node-js-app\n\nBased on this work, the Keen IO team recommended me to the AirPair.com community as an expert on Analytics, JavaScript and their API.",
-                "title": "Director"
-            }]
-        },
-        "publicProfileUrl": "http://www.linkedin.com/in/heyseb",
-        "relationToViewer": {
-            "distance": 0
-        },
-        "siteStandardProfileRequest": {
-            "url": "http://www.linkedin.com/profile/view?id=49839058&authType=name&authToken=iDwz&trk=api*a266483*s274221*"
-        },
-        "summary": "I want to help you realise your ideas by helping architect, develop and manage the creation of mobile apps and websites.\n\nMy speciality is in combining strong technical knowledge with lateral thinking.\n\nI can help you to build out a product on both the back-end and front-end as well as with assembling and leading technical teams.\n\nI understand business/market fundamentals and can help you in the creation of a working business model with the technical costs factored in.\n\nI enjoy broadening my mind with books and articles on many different disciplines. On the tech-side recently I favour lean development, BDD, the Twelve-Factor App, and the simplicity espoused in Rich Hickey's \"Simple Made Easy\" as the best ways of ensuring high-quality code. I've worked with many different technologies over the years, but it's this knowledge that I feel is most important.\n\nDon't hesitate to get in touch if you think I can help you in any way.\n\nTwitter: http://twitter.com/sebinsua\nGithub: https://github.com/sebinsua\nBlog: http://sebinsua.com\nEmail: me@sebinsua.com",
-        "user_id": "linkedin|rwL6XbAMOz"
-    }
-}
-
 TODO
 ----
 
-* [x] Check the currentAccount and use this to decide whether to load the App or not.
+* [x] Make sure you're storing aspects of the profile with registration.
+* [ ] Make it so that "connecting" when you already have an account logs you straight in without registration!
+
+* [ ] Can I edit the user? (Hardcode the user id.)
 
 * [ ] The device should store my address book against my account.
 * [ ] Can I store the profile photo somewhere?
 
 * [ ] Can I display a user Ids list of notifications.
-* [ ] Can I edit the user? (Hardcode the user id.)
 
 * [ ] Can I notify via a profile?
 
 * [ ] Can I create a new proposal?
-
-* * *
-
-* [x] LinkedIn authentication.
-* [x] Can I logout?
 
 * * *
 

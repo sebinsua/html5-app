@@ -128,9 +128,10 @@
   spokes.run([
     '$ionicPlatform',
     '$rootScope',
+    '$state',
     'Restangular',
     'AuthenticationService',
-    function ($ionicPlatform, $rootScope, Restangular, AuthenticationService) {
+    function ($ionicPlatform, $rootScope, $state, Restangular, AuthenticationService) {
       Restangular.setErrorInterceptor(function (response) {
         if (response.status == 401) {
           $rootScope.$broadcast('event:auth-login-required');
@@ -159,6 +160,7 @@
 
       $rootScope.$on('event:auth-login-required', function () {
         console.log("Login required.");
+        $state.go('value-proposition', {}, { location: "replace" });
       });
 
       $rootScope.$on('event:auth-login-success', function () {

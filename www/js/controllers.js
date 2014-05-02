@@ -29,8 +29,9 @@
       console.log("Sign In: This is executed.");
 
       $scope.signIn = function signIn() {
-        AuthenticationService.login();
-        $state.go('join.basic');
+        AuthenticationService.login().then(function () {
+          $state.go('join.basic');
+        });
       };
     }
   ]);
@@ -40,7 +41,8 @@
     '$state',
     '$sce',
     'SharedData',
-    function ($scope, $state, $sce, SharedData) {
+    'AuthenticationService',
+    function ($scope, $state, $sce, SharedData, AuthenticationService) {
       console.log("Join Basic: This is executed.");
 
       var getContacts = function getContacts() {
@@ -66,9 +68,23 @@
       };
       getContacts();
 
-      $scope.account = SharedData;
+      var currentAccount = AuthenticationService.getCurrentAccount();
 
-      $scope.profilePhoto = "https://pbs.twimg.com/profile_images/3583837846/345847dccc3e3bd8bd1fbed402a1f963_bigger.jpeg";
+      $scope.account = SharedData;
+      $scope.account.userId = currentAccount.profile.user_id;
+      $scope.account.name = currentAccount.profile.name;
+      $scope.account.givenName = currentAccount.profile.given_name;
+      $scope.account.familyName = currentAccount.profile.family_name;
+      $scope.account.headline = currentAccount.profile.headline;
+      $scope.account.industry = currentAccount.profile.industry;
+      $scope.account.currentPositions = _.map(currentAccount.profile.positions.values, function (position) {
+        return position;
+      });
+      $scope.account.publicProfileUrl = currentAccount.profile.publicProfileUrl;
+
+      console.log(SharedData);
+
+      $scope.profilePhoto = currentAccount.profile.picture || "https://pbs.twimg.com/profile_images/3583837846/345847dccc3e3bd8bd1fbed402a1f963_bigger.jpeg";
 
       $scope.genders = [
         { value: 'F', name: 'Female' },
