@@ -4,7 +4,11 @@ Spokes
 TODO
 ----
 
+* Get a little id back from the login server. Choose to change state to 
+  the stream if it exists on the Spokes API, instead of join.
+
 * [x] Make sure you're storing aspects of the profile with registration.
+* [ ] Save the identities object.
 * [ ] Make it so that "connecting" when you already have an account logs you straight in without registration!
 
 * [ ] Can I edit the user? (Hardcode the user id.)
