@@ -47,6 +47,7 @@
         }, function (err) {
           console.log(err);
           $rootScope.$broadcast('event:auth-login-failure');
+          return false;
         });
       };
 
@@ -71,6 +72,13 @@
       };
     }
   ]);
+
+  services.service('UserAuthenticationService', ['Restangular', function (Restangular) {
+    this.getByAuthId = function (authId) {
+      var user = Restangular.all('auth', { authId: authId });
+      return user.get();
+    };
+  }]);
 
   services.service('StreamService', ['Restangular', function (Restangular) {
     var streamAll = Restangular.all('stream');

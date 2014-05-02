@@ -25,11 +25,17 @@
     '$scope',
     '$state',
     'AuthenticationService',
-    function ($scope, $state, AuthenticationService) {
+    'UserAuthenticationService',
+    function ($scope, $state, AuthenticationService, UserAuthenticationService) {
       console.log("Sign In: This is executed.");
 
       $scope.signIn = function signIn() {
-        AuthenticationService.login().then(function () {
+        AuthenticationService.login().then(function (profile) {
+          var authId = profile['user_id'];
+          return UserAuthenticationService.getByAuthId(authId);
+        }).then(function () {
+          $state.go('app.stream');
+        }, function () {
           $state.go('join.basic');
         });
       };
@@ -56,33 +62,33 @@
         };
 
         // @TODO: This can be implemented with a promise... :)
-        navigator.contacts && ionic.Platform.ready(function () {
-          var options = new ContactFindOptions();
+        if (navigator.contacts) {
+          ionic.Platform.ready(function () {
+            var options = new ContactFindOptions();
 
-          options.filter = "";
-          options.multiple = true;
-          var filter = ["phoneNumbers", "displayName"];
+            options.filter = "";
+            options.multiple = true;
+            var filter = ["phoneNumbers", "displayName"];
 
-          navigator.contacts.find(filter, onSuccess, onFail, options);
-        });
+            navigator.contacts.find(filter, onSuccess, onFail, options);
+          });
+        }
       };
       getContacts();
 
       var currentAccount = AuthenticationService.getCurrentAccount();
 
       $scope.account = SharedData;
-      $scope.account.userId = currentAccount.profile.user_id;
+      $scope.account.authId = currentAccount.profile['user_id'];
       $scope.account.name = currentAccount.profile.name;
-      $scope.account.givenName = currentAccount.profile.given_name;
-      $scope.account.familyName = currentAccount.profile.family_name;
+      $scope.account.givenName = currentAccount.profile['given_name'];
+      $scope.account.familyName = currentAccount.profile['family_name'];
       $scope.account.headline = currentAccount.profile.headline;
       $scope.account.industry = currentAccount.profile.industry;
       $scope.account.currentPositions = _.map(currentAccount.profile.positions.values, function (position) {
         return position;
       });
       $scope.account.publicProfileUrl = currentAccount.profile.publicProfileUrl;
-
-      console.log(SharedData);
 
       $scope.profilePhoto = currentAccount.profile.picture || "https://pbs.twimg.com/profile_images/3583837846/345847dccc3e3bd8bd1fbed402a1f963_bigger.jpeg";
 
