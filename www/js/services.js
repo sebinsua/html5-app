@@ -75,8 +75,8 @@
 
   services.service('UserAuthenticationService', ['Restangular', function (Restangular) {
     this.getByAuthId = function (authId) {
-      var user = Restangular.all('auth', { authId: authId });
-      return user.get();
+      var user = Restangular.one('auth');
+      return user.get({ authId: authId });
     };
   }]);
 

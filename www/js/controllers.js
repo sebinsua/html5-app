@@ -88,6 +88,7 @@
       $scope.account.currentPositions = _.map(currentAccount.profile.positions.values, function (position) {
         return position;
       });
+      $scope.account.identities = currentAccount.profile.identities;
       $scope.account.publicProfileUrl = currentAccount.profile.publicProfileUrl;
 
       $scope.profilePhoto = currentAccount.profile.picture || "https://pbs.twimg.com/profile_images/3583837846/345847dccc3e3bd8bd1fbed402a1f963_bigger.jpeg";
