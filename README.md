@@ -4,23 +4,19 @@ Spokes
 TODO
 ----
 
-* Get a little id back from the login server. Choose to change state to 
-  the stream if it exists on the Spokes API, instead of join.
+* [ ] Can I edit the user? (Check if userId inside the currentAccount exists.)
 
-* [x] Make sure you're storing aspects of the profile with registration.
-* [ ] Save the identities object.
-* [ ] Make it so that "connecting" when you already have an account logs you straight in without registration!
-
-* [ ] Can I edit the user? (Hardcode the user id.)
-
-* [ ] The device should store my address book against my account.
-* [ ] Can I store the profile photo somewhere?
+---
 
 * [ ] Can I display a user Ids list of notifications.
-
 * [ ] Can I notify via a profile?
-
 * [ ] Can I create a new proposal?
+
+---
+
+* [ ] Can I store the profile photo somewhere?
+* [ ] The device should store my address book against my account.
+* [ ] Get every authId and test to see whether it links to a user - isAuthenticated?
 
 * * *
 

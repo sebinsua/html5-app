@@ -48,33 +48,14 @@
     '$sce',
     'SharedData',
     'AuthenticationService',
-    function ($scope, $state, $sce, SharedData, AuthenticationService) {
+    'ContactsService',
+    function ($scope, $state, $sce, SharedData, AuthenticationService, ContactsService) {
       console.log("Join Basic: This is executed.");
 
-      var getContacts = function getContacts() {
-        var onSuccess = function (contacts) {
-          console.log(contacts);
-          $scope.contacts = contacts;
-          $scope.$apply();
-        };
-        var onFail = function (e) {
-          console.log("On fail " + e);
-        };
-
-        // @TODO: This can be implemented with a promise... :)
-        if (navigator.contacts) {
-          ionic.Platform.ready(function () {
-            var options = new ContactFindOptions();
-
-            options.filter = "";
-            options.multiple = true;
-            var filter = ["phoneNumbers", "displayName"];
-
-            navigator.contacts.find(filter, onSuccess, onFail, options);
-          });
-        }
-      };
-      getContacts();
+      ContactsService.getAll().then(function (contacts) {
+        $scope.contacts = contacts;
+        $scope.$apply();
+      });
 
       var currentAccount = AuthenticationService.getCurrentAccount();
 
@@ -177,7 +158,8 @@
     '$state',
     'SharedData',
     'UsersService',
-    function ($scope, $state, SharedData, UsersService) {
+    'AuthenticationService',
+    function ($scope, $state, SharedData, UsersService, AuthenticationService) {
 
       console.log("Join Proposal: This is executed.");
 
@@ -185,7 +167,10 @@
 
       $scope.register = function next() {
         var newAccount = $scope.account;
-        UsersService.create(newAccount).then(function () {
+        console.log("yeah mate");
+        console.log(newAccount);
+        UsersService.create(newAccount).then(function (response) {
+          AuthenticationService.linkToUser(response.id);
           $state.go('app.stream');
         }).fail(function (err) {
           console.log(err);

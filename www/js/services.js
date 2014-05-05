@@ -51,6 +51,16 @@
         });
       };
 
+      this.linkToUser = function (userId) {
+        var currentAccountString = localStorage.getItem('currentAccount');
+        if (currentAccountString && currentAccountString.length) {
+          var currentAccount = JSON.parse(currentAccountString);
+          currentAccount.userId = userId;
+          localStorage.setItem('currentAccount', JSON.stringify(currentAccount));
+        }
+        return false;
+      };
+
       this.isLoggedIn = function () {
         // @TODO: Test token?
         return this.getCurrentAccount() !== false;
@@ -73,6 +83,31 @@
     }
   ]);
 
+  services.service('ContactsService', ['$q', function ($q) {
+    this.getAll = function getAll() {
+      var deferred = $q.defer();
+      if (navigator.contacts) {
+        ionic.Platform.ready(function () {
+          var options = new ContactFindOptions();
+
+          options.filter = "";
+          options.multiple = true;
+          var filter = ["phoneNumbers", "displayName"];
+
+          navigator.contacts.find(filter, function onSuccess(contacts) {
+            deferred.resolve(contacts);
+          }, function onError(e) {
+            console.log("On fail " + e);
+            deferred.reject(e);
+          }, options);
+        });
+      } else {
+        deferred.reject("PhoneGap not being used. No access to navigator.");
+      }
+      return deferred.promise;
+    };
+  }]);
+
   services.service('UserAuthenticationService', ['Restangular', function (Restangular) {
     this.getByAuthId = function (authId) {
       var user = Restangular.one('auth');
@@ -92,13 +127,21 @@
 
     this.create = function (userData) {
       var user = {
+        'authId': userData.authId,
         'name': userData.name,
+        'firstName': userData.givenName,
+        'lastName': userData.familyName,
+        'headline': userData.headline,
+        'industry': userData.industry,
         'email': userData.email,
         'country': userData.country.name,
         'gender': userData.gender.value,
         'birthDate': userData.birthDate,
         'mobileNumber': userData.mobileNumberPrefix + ' ' + userData.mobileNumber,
-        'meetingPlace': userData.meetingPlace
+        'meetingPlace': userData.meetingPlace,
+        'currentPositions': userData.currentPositions,
+        'identities': userData.identities,
+        'linkedInUrl': userData.publicProfileUrl
       };
 
       var proposal = {};
