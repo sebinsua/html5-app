@@ -33,7 +33,8 @@
         AuthenticationService.login().then(function (profile) {
           var authId = profile['user_id'];
           return UserAuthenticationService.getByAuthId(authId);
-        }).then(function () {
+        }).then(function (response) {
+          AuthenticationService.linkToUser(response.id);
           $state.go('app.stream');
         }, function () {
           $state.go('join.basic');
@@ -167,8 +168,6 @@
 
       $scope.register = function next() {
         var newAccount = $scope.account;
-        console.log("yeah mate");
-        console.log(newAccount);
         UsersService.create(newAccount).then(function (response) {
           AuthenticationService.linkToUser(response.id);
           $state.go('app.stream');
@@ -195,25 +194,35 @@
     };
   }]);
 
-  controllers.controller('EditAccountCtrl', ['$scope', 'UsersService', function ($scope, UsersService) {
-    console.log("Edit Account: This is executed.");
+  controllers.controller('EditAccountCtrl', [
+    '$scope',
+    'AuthenticationService',
+    'UsersService',
+    function ($scope, AuthenticationService, UsersService) {
+      console.log("Edit Account: This is executed.");
 
-    $scope.genders = [
-      { value: 'F', name: 'Female' },
-      { value: 'M', name: 'Male' },
-      { value: '-', name: 'Other' }
-    ];
+      var currentAccount = AuthenticationService.getCurrentAccount();
+      var userId = currentAccount.userId;
 
-    $scope.account = {};
+      $scope.profilePhoto = currentAccount.picture || "https://pbs.twimg.com/profile_images/3583837846/345847dccc3e3bd8bd1fbed402a1f963_bigger.jpeg";
+      $scope.genders = [
+        { value: 'F', name: 'Female' },
+        { value: 'M', name: 'Male' },
+        { value: '-', name: 'Other' }
+      ];
 
-    $scope.update = function updateAccount() {
-      var userId = "1";
-      var userObject = {};
-      return UsersService.edit(userId, userObject).then(function (items) {
-        $scope.items = items;
+      console.log("userId" + userId);
+      var userResource = UsersService.getById(userId).then(function (user) {
+        console.log(user);
+        $scope.account = user;
+        $scope.$apply();
       });
-    };
-  }]);
+
+      $scope.update = function updateAccount() {
+        return userResource.put();
+      };
+    }
+  ]);
 
   controllers.controller('StreamCtrl', ['$scope', 'StreamService', function ($scope, StreamService) {
     console.log("Stream: This is executed.");

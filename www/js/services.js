@@ -166,6 +166,7 @@
     };
 
     this.getById = function (userId) {
+      console.log(userId);
       var user = Restangular.one('users', userId);
       return user.get();
     };
