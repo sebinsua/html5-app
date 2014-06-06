@@ -4,6 +4,7 @@ Spokes
 TODO
 ----
 
+* [ ] http://ionicframework.com/blog/ng-cordova/
 * [ ] Can I edit the user? (Check if userId inside the currentAccount exists.)
 
 ---
