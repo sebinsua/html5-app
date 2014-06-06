@@ -4,44 +4,19 @@ Spokes
 TODO
 ----
 
-* [ ] http://ionicframework.com/blog/ng-cordova/
-* [ ] Can I edit the user? (Check if userId inside the currentAccount exists.)
+Order these by the most important.
 
----
-
+* [ ] The profile screen contains buttons to "request/offer help", their name, photo, and most importantly in large text their statement of intent.
+* [ ] Gesture should be on a proposal not a user.
 * [ ] Can I display a user Ids list of notifications.
-* [ ] Can I notify via a profile?
-* [ ] Can I create a new proposal?
-
----
-
+* [x] Can I notify via a profile?
 * [ ] Can I store the profile photo somewhere?
 * [ ] The device should store my address book against my account.
-* [ ] Get every authId and test to see whether it links to a user - isAuthenticated?
-
-* * *
-
-* [ ] On the stream of statements, clicking on anything loads the profile screen.
-* [ ] On the top of the screen the header has three parts:
-      On the left, an elastic slide-out menu.
-      In the centre, a little logo that links to the "statement of intent" screen.
-      On the right, a highlightable ticker of number of notifications waiting for you.
-* [ ] Left hand drawer contains:
-      - Account
-      - Log Out
-* [ ] Account contains options to edit the various details of your account.
-* [ ] And also to add Help (person you interacted with, what you did.) - this causes a notification to be signed-off by the other person.
-* [ ] The notification screen contains:
-      Requests to add "Help" events to account's ledgers.
-      Requests and offers for a meeting related to some help.
-* [ ] The profile screen contains buttons to "request/offer help", their name, photo, and most importantly in large text their statement of intent.
-* [ ] Below this it will eventually contain a list of "Help" events in the form of a
- vertical timeline.
+* [ ] Can I create a new proposal/statement of intent?
+* [ ] On the right, a highlightable ticker of number of notifications waiting for you.
 * [ ] If somebody has accepted your request to meetup, the button will be replaced with
       "Converse" which will load a chat screen similar to the one on Whatsapp.
 
-* Use the $window.
-* Can I get a basic APP prototype in my hand before the 24th?
 * gyp: binding.gyp not found (cwd: /app)
   gyp ERR! configure error
 * get bcrypt installed, too.
@@ -167,8 +142,6 @@ http://docs.angularjs.org/guide/forms
 http://docs.angularjs.org/api/ng/directive/ngModel
 
 Nice looking site: https://www.facebook.com/mobile/messenger
-
-http://famo.us
 
 Audo/Video Talk
 https://developer.oovoo.com/registration

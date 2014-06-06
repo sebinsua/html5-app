@@ -2,6 +2,7 @@
   "use strict";
 
   var spokes = angular.module('spokes', [
+    'ngCordova',
     'ionic',
     'restangular',
     'angularMoment',
@@ -101,7 +102,7 @@
           }
         })
         .state('app.profile', {
-          url: '/profile/:userId',
+          url: '/user/:userId',
           views: {
             menuContent: {
               templateUrl: "./templates/profile.html",
@@ -126,12 +127,13 @@
   ]);
 
   spokes.run([
+    '$window',
     '$ionicPlatform',
     '$rootScope',
     '$state',
     'Restangular',
     'AuthenticationService',
-    function ($ionicPlatform, $rootScope, $state, Restangular, AuthenticationService) {
+    function ($window, $ionicPlatform, $rootScope, $state, Restangular, AuthenticationService) {
       Restangular.setErrorInterceptor(function (response) {
         if (response.status == 401) {
           $rootScope.$broadcast('event:auth-login-required');
@@ -176,7 +178,7 @@
       });
 
       $ionicPlatform.ready(function () {
-        if (window.StatusBar) {
+        if ($window.StatusBar) {
           StatusBar.styleDefault();
         }
       });

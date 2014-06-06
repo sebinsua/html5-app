@@ -4,10 +4,11 @@
   var services = angular.module('spokes.services', ['restangular']);
 
   services.service('AuthenticationService', [
+    '$window',
     '$rootScope',
     '$q',
-    function ($rootScope, $q) {
-      var localStorage = window.localStorage;
+    function ($window, $rootScope, $q) {
+      var localStorage = $window.localStorage;
 
       var DOMAIN = "spokes.auth0.com";
       var CLIENT_ID = "VKtbT0VB0iqYMudMSmW4DKuwV1svqybM";
@@ -15,7 +16,7 @@
       var _login = function () {
         var deferred = $q.defer();
 
-        var isAuth0PluginLoaded = !!window.Auth0Client;
+        var isAuth0PluginLoaded = !!$window.Auth0Client;
         if (isAuth0PluginLoaded) {
           var auth0 = new Auth0Client(DOMAIN, CLIENT_ID);
           auth0.login({ connection: "linkedin" }, function (err, result) {
@@ -23,12 +24,13 @@
               return deferred.reject(err);
             }
 
-            deferred.resolve(result);
+            deferred.resolve(result[0]);
           });
         } else {
+          var randomId = Date.now();
           deferred.resolve({
-            "auth0AccessToken": "64eTFhviQz3glG3E",
-            "idToken": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL3Nwb2tlcy5hdXRoMC5jb20vIiwic3ViIjoibGlua2VkaW58cndMNlhiQU1PeiIsImF1ZCI6IlZLdGJUMFZCMGlxWU11ZE1TbVc0REt1d1Yxc3ZxeWJNIiwiZXhwIjoxMzk5MDE0Mjk1LCJpYXQiOjEzOTg5NzgyOTV9.eCMW7q_4gelnyPMlTCbUlpDWvNXPd2MuzlLMvgUCPjY",
+            "auth0AccessToken": "development-" + randomId,
+            "idToken": "development-" + randomId,
             "profile": {}
           });
         }
@@ -42,8 +44,8 @@
         console.log("Logging in...");
         return _login().then(function (currentAccountData) {
           localStorage.setItem('currentAccount', JSON.stringify(currentAccountData));
-          $rootScope.$broadcast('event:auth-login-success', currentAccountData.profile);
-          return currentAccountData.profile;
+          $rootScope.$broadcast('event:auth-login-success', currentAccountData);
+          return currentAccountData;
         }, function (err) {
           console.log(err);
           $rootScope.$broadcast('event:auth-login-failure');
@@ -57,6 +59,7 @@
           var currentAccount = JSON.parse(currentAccountString);
           currentAccount.userId = userId;
           localStorage.setItem('currentAccount', JSON.stringify(currentAccount));
+          console.log("currentAccount set with " + userId);
         }
         return false;
       };
@@ -161,24 +164,42 @@
         var userId = response.id;
 
         var userProposals = Restangular.one('users', userId).all('proposals');
-        return userProposals.post(proposal);
+        return userProposals.post(proposal).then(function (proposalResponse) {
+          return response;
+        });
       });
     };
 
     this.getById = function (userId) {
-      console.log(userId);
       var user = Restangular.one('users', userId);
       return user.get();
     };
 
     this.edit = function (userId, userData) {
       var user = Restangular.one('users', userId);
-      return user.put(userData);
+      return user.customPUT(userData);
     };
 
     this.getNotificationsById = function (userId) {
       var userNotifications = Restangular.one('users', userId).all('notifications');
       return userNotifications.getList();
+    };
+
+    this.getProposalsById = function (userId) {
+      var userProposals = Restangular.one('users', userId).all('proposals');
+      return userProposals.getList();
+    };
+  }]);
+
+  services.service('GesturesService', ['Restangular', function (Restangular) {
+    var gestures = Restangular.all('gestures');
+
+    this.create = function create(userIdFrom, userIdTo) {
+      var gesture = {
+        'userId': userIdFrom,
+        'nodeId': userIdTo
+      };
+      return gestures.post(gesture);
     };
   }]);
 

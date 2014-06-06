@@ -30,10 +30,12 @@
       console.log("Sign In: This is executed.");
 
       $scope.signIn = function signIn() {
-        AuthenticationService.login().then(function (profile) {
-          var authId = profile['user_id'];
+        AuthenticationService.login().then(function (currentAccount) {
+          var authId = currentAccount.idToken;
           return UserAuthenticationService.getByAuthId(authId);
         }).then(function (response) {
+          console.log("response was");
+          console.log(response);
           AuthenticationService.linkToUser(response.id);
           $state.go('app.stream');
         }, function () {
@@ -61,15 +63,15 @@
       var currentAccount = AuthenticationService.getCurrentAccount();
 
       $scope.account = SharedData;
-      $scope.account.authId = currentAccount.profile['user_id'];
+      $scope.account.authId = currentAccount.idToken;
       $scope.account.name = currentAccount.profile.name;
       $scope.account.givenName = currentAccount.profile['given_name'];
       $scope.account.familyName = currentAccount.profile['family_name'];
       $scope.account.headline = currentAccount.profile.headline;
       $scope.account.industry = currentAccount.profile.industry;
-      $scope.account.currentPositions = _.map(currentAccount.profile.positions.values, function (position) {
+      $scope.account.currentPositions = currentAccount.profile.positions ? _.map(currentAccount.profile.positions.values, function (position) {
         return position;
-      });
+      }) : [];
       $scope.account.identities = currentAccount.profile.identities;
       $scope.account.publicProfileUrl = currentAccount.profile.publicProfileUrl;
 
@@ -168,10 +170,11 @@
 
       $scope.register = function next() {
         var newAccount = $scope.account;
-        UsersService.create(newAccount).then(function (response) {
-          AuthenticationService.linkToUser(response.id);
+        UsersService.create(newAccount).then(function (userResponse) {
+          console.log(userResponse);
+          AuthenticationService.linkToUser(userResponse.id);
           $state.go('app.stream');
-        }).fail(function (err) {
+        }, function (err) {
           console.log(err);
         });
 
@@ -212,20 +215,29 @@
       ];
 
       console.log("userId" + userId);
-      var userResource = UsersService.getById(userId).then(function (user) {
-        console.log(user);
+      UsersService.getById(userId).then(function (user) {
         $scope.account = user;
-        $scope.$apply();
       });
 
       $scope.update = function updateAccount() {
-        return userResource.put();
+        var userData = $scope.account;
+
+        var user = {
+          'name': userData.name,
+          'email': userData.email,
+          'gender': userData.gender.value,
+          'birthDate': userData.birthDate
+        };
+        return UsersService.edit(userId, user);
       };
     }
   ]);
 
-  controllers.controller('StreamCtrl', ['$scope', 'StreamService', function ($scope, StreamService) {
+  controllers.controller('StreamCtrl', ['$scope', 'StreamService', 'AuthenticationService', function ($scope, StreamService, AuthenticationService) {
     console.log("Stream: This is executed.");
+
+    var currentAccount = AuthenticationService.getCurrentAccount();
+    console.log(currentAccount);
 
     $scope.getStream = function getStream(refresh) {
       refresh = refresh || false;
@@ -241,24 +253,38 @@
     $scope.items = $scope.getStream().$object;
   }]);
 
-  controllers.controller('ProfileCtrl', ['$scope', '$stateParams', 'UsersService', function ($scope, $stateParams, UsersService) {
+  controllers.controller('ProfileCtrl', ['$scope', '$stateParams', 'UsersService', 'AuthenticationService', 'GesturesService', function ($scope, $stateParams, UsersService, AuthenticationService, GesturesService) {
     console.log("Profile: This is executed.");
 
+    var currentAccount = AuthenticationService.getCurrentAccount();
+    var userIdFrom = currentAccount.userId;
+    var profileId = $stateParams.userId;
+
     var getUser = function getUser() {
-      var userId = $stateParams.userId;
-      return UsersService.getById(userId).then(function (user) {
+      UsersService.getById(profileId).then(function (user) {
         $scope.user = user;
+      });
+
+      UsersService.getProposalsById(profileId).then(function (proposals) {
+        console.log(proposals);
+        $scope.proposals = proposals;
       });
     };
 
-    $scope.user = getUser().$object;
+    getUser();
+
+    $scope.notify = function notify() {
+      return GesturesService.create(userIdFrom, userIdTo);
+    };
   }]);
 
-  controllers.controller('NotificationsCtrl', ['$scope', 'UsersService', function ($scope, UsersService) {
+  controllers.controller('NotificationsCtrl', ['$scope', 'AuthenticationService', 'UsersService', function ($scope, AuthenticationService, UsersService) {
     console.log("Notifications: This is executed.");
 
+    var currentAccount = AuthenticationService.getCurrentAccount(),
+        userId = currentAccount.userId;
+
     var getNotifications = function getNotifications() {
-      var userId = "1";
       return UsersService.getNotificationsById(userId).then(function (items) {
         $scope.items = items;
       });
