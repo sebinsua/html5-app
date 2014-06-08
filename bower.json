@@ -1,5 +1,5 @@
 {
-  "name": "spokes",
+  "name": "ionic-app",
   "private": true,
   "dependencies": {
     "ionic": "driftyco/ionic-bower#master",

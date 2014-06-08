@@ -20,10 +20,3 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 
 // Include all of Ionic
 @import "www/lib/ionic/scss/ionic";
-
-@import "./core/forms";
-
-@import "./screens/value-proposition";
-@import "./screens/sign-in";
-@import "./screens/join-basic";
-@import "./screens/join-proposal";

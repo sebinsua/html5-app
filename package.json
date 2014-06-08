@@ -1,10 +1,10 @@
 {
-  "name": "spokes",
+  "name": "ionic-app",
   "version": "0.0.1",
-  "description": "Spokes app",
+  "description": "Ionic app",
   "repository": {
     "type": "git",
-    "url": "git://github.com/sebinsua/spokes-app.git"
+    "url": "git://github.com/sebinsua/ionic-app.git"
   },
   "dependencies": {
     "gulp": "^3.5.6",
